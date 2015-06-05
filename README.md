@@ -1,5 +1,6 @@
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AnimalRescue/AnimalRescue?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-`# AnimalRescue
+
+# AnimalRescue
 AnimalRescue is a community-supported .NET project giving online capabilities to non-profit animal rescue organization.  It is intended to provide web-based access to intake, adoption, foster and volunteer management, veterinary services, medical records, and push interfaces to a number of nationwide pet adoption web sites (just to name a few)
 
 ## Developer Workflow
