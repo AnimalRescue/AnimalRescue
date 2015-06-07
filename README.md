@@ -11,7 +11,7 @@ The project management board currently resides at github.com/AnimalRescue and is
 
 * API 
   * **_AP_**plication **_I_**nterface
-  * A contractually defined mechanism, generally implemented as an interface, following SemVer rules
+  * A contractually defined mechanism, generally implemented as an interface, following SemVer 2.0 rules
 * ATDD 
   * **_A_**cceptance **_T_**est **_D_**riven **_D_**evelopment
 * BDD 
