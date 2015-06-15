@@ -19,15 +19,15 @@ The project management board currently resides at github.com/AnimalRescue and is
 * CR 
   * **_C_**ode **_R_**eview
 * Epic
-  * an Issue with a corresponding milestone (for filtering) and an Epic lable 
+  * an Issue with a corresponding milestone (for filtering) and an Epic label
 * Feature
-  * an Issue with a corresponding milestone of the Epic it is contained in and a Feature lable 
+  * an Issue with a corresponding milestone of the Epic it is contained in and a Feature label 
   * link to its parent by putting #### Parent #parentIssueNumber as the first line of the description
 * PO 
   * **_P_**roduct **_O_**wner
 * PR 
   * **_P_**ull **_R_**equest 
-  * Merge into one Git branch to another, usually triggering an intervening build to validate the source code
+  * Request sent to upstream branch to pull in your branches code.  Usually triggering an intervening build to validate the source code
 * SemVer
   * **_Sem_**antic **_Ver_**sioning
   * http://semver.org/
