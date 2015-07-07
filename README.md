@@ -7,7 +7,9 @@ AnimalRescue is a community-supported .NET project giving online capabilities to
 
 ## Developer Workflow
 
-The project management board currently resides at github.com/AnimalRescue and is initially being developed by the original team at this time. After the initial structure and code base are created, the GitHub repository will be open for pull requests from the community at large.  
+The project management board currently resides at github.com/AnimalRescue and is being developed by the original team at this time. After the initial structure and code base are created, the GitHub repository will be open for pull requests from the community at large.
+
+Our current goal is to create this system using the .NET vNext architecture so that it can be deployed on a 'nix system and run in Azure.  Time will tell if this goal is possible...vNext is in beta at the time of this writing.
 
 ###Abbreviations used are:
 
