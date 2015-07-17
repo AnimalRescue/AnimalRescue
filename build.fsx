@@ -64,8 +64,7 @@ if not webConfigExists then
     FileUtils.cp "./config/Web.config" projectDir
     FileUtils.cp "./config/Web.config" (projectDir @@ "Web.Base.config")
     FileUtils.cp "./config/Web.Transform.config" (projectDir @@ "Web.Debug.config")
-    FileUtils.cp "./config/Web.Transform.config" (projectDir @@ "Web.Azure.config")
-    FileUtils.cp "./config/Web.Transform.config" (projectDir @@ "Web.Release.config")
+    FileUtils.cp "./config/Web.Release.config" (projectDir @@ "Web.Release.config")
 
 // Restore packages
 RestorePackages ()
@@ -117,31 +116,6 @@ Target "IntegrationTest" (fun _ ->
                 ToolPath = "packages/xunit.runner.console/tools/xunit.console.exe"})
 )
 
-let private fromEntityConnectionString name =
-    let builder = new EntityConnectionStringBuilder(name)
-    builder.ProviderConnectionString
-
-let private readWebConfigConnectionString name =
-    let webConfig = readConfig (projectDir + "Web.config")
-    (webConfig.SelectSingleNode ("/configuration/connectionStrings/add[@name='" + name + "']/@connectionString")).Value
-
-let private getConnectionStrings () =
-    if buildServer = BuildServer.AppVeyor then
-        [(userDatabaseEnvar, environVar userDatabaseEnvar, userDatabaseMigrationScript);
-        (appDatabaseEnvar, fromEntityConnectionString (environVar appDatabaseEnvar), appDatabaseMigrationScript)]
-    else
-        [(userDatabaseEnvar, readWebConfigConnectionString userDatabaseEnvar, userDatabaseMigrationScript);
-        (appDatabaseEnvar, fromEntityConnectionString (readWebConfigConnectionString appDatabaseEnvar), appDatabaseMigrationScript)]
-
-Target "MigrateDatabase" (fun _ ->
-    let connectionStrings = getConnectionStrings ()
-
-    for (database, connectionString, scriptPath) in connectionStrings do
-        trace ("Migrating database " + database)
-        runScript (getServerInfo connectionString) scriptPath
-        trace ("Done migrating " + database)
-)
-
 Target "Package" (fun _ ->
     MSBuild deployDir "Build,Package" [("VisualStudioVersion","12.0");("PackageLocation",("../" @@ deployDir @@ "voat.zip"));("PackageAsSingleFile","True");("BuildServer","True");("Configuration", "Azure")] appReferences
             |> Log "Package-Output: "
@@ -164,7 +138,6 @@ let appVeyorBuild = buildServer = BuildServer.AppVeyor
 "Clean"
   ==> "BuildApp"
 //  ==> "BuildTest"
-//  =?> ("MigrateDatabase", hasBuildParam "MigrateDatabase")
 //  ==> "UnitTest"
 //  ==> "IntegrationTest"
   =?> ("Package", package)

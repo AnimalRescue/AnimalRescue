@@ -25,3 +25,10 @@ project.lock.json
 *.ncrunchsolution
 *.*sdf
 *.ipch
+.vs/
+*.ncrunchproject
+*Web.config
+*Web.Debug.config
+*Web.Base.config
+*Web.Release.config
+build/
