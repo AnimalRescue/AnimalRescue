@@ -1,0 +1,13 @@
+build_script:
+  - build.cmd Default Deploy
+
+cache:
+    - packages -> **\packages.config
+
+test: off
+
+deploy:
+  provider: Environment
+  name: animalrescue
+  on:
+    branch: dev
