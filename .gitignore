@@ -27,8 +27,5 @@ project.lock.json
 *.ipch
 .vs/
 *.ncrunchproject
-*Web.config
-*Web.Debug.config
-*Web.Base.config
-*Web.Release.config
+src/Web/*.config
 build/
