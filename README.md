@@ -98,6 +98,8 @@ The approved developer workflow is as follows:
   * When all builds go green for the last PR in a work item, one of the admin/originals team will invoke the Merge and delete your local branch when successful.
 
 * Build and deploy
+  * The first time you build, use build.cmd to place config files in the correct locations
+    * Web config files are customized by your build configuration and are not committed to the repo
   * Pull Request into the dev branch
     * Try to get two other team members not involved in the Task to do a Code Review (CR)
     * When approved, the PR is merged into Git
