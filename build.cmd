@@ -1,4 +1,4 @@
-@echo off
+ @echo off
 IF NOT EXIST "packages\FAKE\tools\FakeLib.dll" (
   "tools\NuGet.exe" "Install" "FAKE" "-OutputDirectory" "packages" "-ExcludeVersion"
 )
