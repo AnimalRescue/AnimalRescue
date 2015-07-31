@@ -34,8 +34,7 @@ namespace Specs
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Intake", "Given the user is an authorized to perform intake\nWhen a new animal is taken into" +
-                    " the rescue\nThen the animal\'s type must be recorded from a pre-populated list", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Intake", "", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -75,20 +74,38 @@ namespace Specs
         
         [Xunit.FactAttribute()]
         [Xunit.TraitAttribute("FeatureTitle", "Intake")]
-        [Xunit.TraitAttribute("Description", "User is authorized to perform intake")]
-        public virtual void UserIsAuthorizedToPerformIntake()
+        [Xunit.TraitAttribute("Description", "User must be authorized to perform intake")]
+        public virtual void UserMustBeAuthorizedToPerformIntake()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User is authorized to perform intake", ((string[])(null)));
-#line 6
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User must be authorized to perform intake", ((string[])(null)));
+#line 3
 this.ScenarioSetup(scenarioInfo);
-#line 7
+#line 4
  testRunner.Given("The user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 8
+#line 5
  testRunner.And("The user has intake permission", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 9
+#line 6
  testRunner.When("The user attempts to perform intake", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 10
+#line 7
  testRunner.Then("the intake screen should be displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute()]
+        [Xunit.TraitAttribute("FeatureTitle", "Intake")]
+        [Xunit.TraitAttribute("Description", "User must specify animal type during Intake")]
+        public virtual void UserMustSpecifyAnimalTypeDuringIntake()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User must specify animal type during Intake", ((string[])(null)));
+#line 9
+this.ScenarioSetup(scenarioInfo);
+#line 10
+ testRunner.Given("the user is an authorized to perform intake", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 11
+ testRunner.When("a new animal is taken into the rescue", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 12
+ testRunner.Then("the animal\'s type must be recorded from a pre-populated list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -100,15 +117,15 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User is not authorized to perform intake", new string[] {
                         "ignore"});
-#line 13
-this.ScenarioSetup(scenarioInfo);
-#line 14
- testRunner.Given("The user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 15
- testRunner.And("The user does not have intake permission", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 16
- testRunner.When("The user attempts to perform intake", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 17
+ testRunner.Given("The user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 18
+ testRunner.And("The user does not have intake permission", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 19
+ testRunner.When("The user attempts to perform intake", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 20
  testRunner.Then("A user-not-authorized error message should be displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -121,15 +138,15 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Animal type is not selected", new string[] {
                         "ignore"});
-#line 20
-this.ScenarioSetup(scenarioInfo);
-#line 21
- testRunner.Given("The user is authorized", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 22
- testRunner.And("The user is at the intake screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 23
- testRunner.When("The user has not selected an animal type", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 24
+ testRunner.Given("The user is authorized", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 25
+ testRunner.And("The user is at the intake screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 26
+ testRunner.When("The user has not selected an animal type", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 27
  testRunner.Then("The screen cannot be submitted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -142,15 +159,15 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Animal type is selected", new string[] {
                         "ignore"});
-#line 27
-this.ScenarioSetup(scenarioInfo);
-#line 28
- testRunner.Given("The user is authorized", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 29
- testRunner.And("The user is at the intake screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 30
- testRunner.When("The user has selected an animal type", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 31
+ testRunner.Given("The user is authorized", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 32
+ testRunner.And("The user is at the intake screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 33
+ testRunner.When("The user has selected an animal type", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 34
  testRunner.Then("The screen can be submitted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
