@@ -6,11 +6,11 @@ Scenario: User must be authorized to perform intake
 	When The user attempts to perform intake
 	Then the intake screen should be displayed
 
+@ignore
 Scenario: User must specify animal type during Intake
 	Given the user is an authorized to perform intake
 	When a new animal is taken into the rescue
 	Then the animal's type must be recorded from a pre-populated list
-
 
 @ignore
 Scenario: User is not authorized to perform intake
