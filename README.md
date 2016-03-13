@@ -3,13 +3,13 @@
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AnimalRescue/AnimalRescue?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 # AnimalRescue
-AnimalRescue is a community-supported .NET project giving online capabilities to non-profit animal rescue organization.  It is intended to provide web-based access to intake, adoption, foster and volunteer management, veterinary services, medical records, and push interfaces to a number of nationwide pet adoption web sites (just to name a few)
+AnimalRescue is a community-supported project giving online capabilities to non-profit animal rescue organizations.  It is intended to provide web-based access to intake, adoption, foster and volunteer management, veterinary services, medical records, and push interfaces to a number of nationwide pet adoption web sites (just to name a few)
 
 ## Developer Workflow
 
 The project management board currently resides at github.com/AnimalRescue and is being developed by the original team at this time. After the initial structure and code base are created, the GitHub repository will be open for pull requests from the community at large.
 
-Our current goal is to create this system using the .NET vNext architecture so that it can be deployed on a 'nix system and run in Azure.  Time will tell if this goal is possible...vNext is in beta at the time of this writing.
+Our current goal is to create this system using bootstrap, angularjs, nodejs, and knex that can be deployed on  and run in the clound.  
 
 ###Abbreviations used are:
 
@@ -97,19 +97,23 @@ The approved developer workflow is as follows:
       * A good rule of thumb is to try to do a PR daily or for each Item, whichever is quicker 
   * When all builds go green for the last PR in a work item, one of the admin/originals team will invoke the Merge and delete your local branch when successful.
 
-* Build and deploy
-  * The first time you build, use build.cmd to place config files in the correct locations
-    * Web config files are customized by your build configuration and are not committed to the repo
-  * Pull Request into the dev branch
-    * Try to get two other team members not involved in the Task to do a Code Review (CR)
-    * When approved, the PR is merged into Git
-    * Build runs from the dev branch merged output (runs unit and integration tests)
-      * if failure, fix and we will build again when you update your fork's branch
-      * if success,
-        * Invoke downstream build for acceptance tests
-      * Invoke build to run downstream SpecFlow UI tests
-      * If success,
-        * Invoke downstream build for merge to master as Release build
-        * Runs all unit, integration, acceptance, and UI tests
-      * if success,
-        * Invoke downstream build to deploy to production
+* Build and deploy  
+  * Pull Request into the dev branch from your feature branch  
+    * A build will be triggered to determine if  
+      * your branch can be merged safely into the repo's dev branch
+      * the system builds and runs unit and integration tests
+        * if failure, fix and we will build again when you update your fork's branch
+        * if success,
+          * Invoke downstream build for acceptance tests
+        * Invoke build to run downstream UI (smoke) tests
+        * If success,
+          * Invoke downstream build for merge to master as Release build
+          * Runs all unit, integration, acceptance, and UI tests
+    * once build is successful, one or more of the Reviewers team will do a Code Review (CR)
+    * When approved, the PR is merged by a Reviewer team member into repo
+    * Another build will be triggered to deploy the system to the QA environment
+      * Members of the QA team will test the deployment 
+      * If successful, a member will trigger another build
+        * merge to the master branch
+        * deploy to production
+
