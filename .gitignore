@@ -29,3 +29,6 @@ project.lock.json
 *.ncrunchproject
 src/Web/*.config
 build/
+.vscode/
+.idea/
+
