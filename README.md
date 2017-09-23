@@ -24,7 +24,7 @@ Our current goal is to create this system using a .NET Core Standard 2.0 impleme
 * ATDD
   * **A**cceptance **T**est **D**riven **D**evelopment
 * BDD
-  * **B**ehavioral **D**riven ***D***evelopment
+  * **B**ehavioral **D**riven **D**evelopment
 * CR
   * **C**ode **R**eview
 * Epic
