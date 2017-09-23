@@ -22,9 +22,9 @@ Our current goal is to create this system using a .NET Core Standard 2.0 impleme
   * **AP**plication **I**nterface
   * A contractually-defined mechanism, generally implemented as an interface, following SemVer 2.0 rules
 * ATDD
-  * ***A***cceptance ***T***est ***D***riven ***D***evelopment
+  * **A**cceptance **T**est **D**riven **D**evelopment
 * BDD
-  * **B**ehavioral **D**riven ***D***evelopment
+  * **B**ehavioral **D**riven **D**evelopment
 * CR
   * **C**ode **R**eview
 * Epic
