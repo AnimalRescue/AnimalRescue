@@ -7920,8 +7920,11 @@
           "name" : {
             "type" : "string"
           },
-          "address" : {
-            "$ref" : "#/components/schemas/Address"
+          "locations" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Location"
+            }
           },
           "phones" : {
             "type" : "array",
@@ -7937,26 +7940,6 @@
           }
         },
         "example" : {
-          "address" : {
-            "country" : "country",
-            "notes" : [ {
-              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-              "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
-              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
-              "content" : "content"
-            }, {
-              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-              "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
-              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
-              "content" : "content"
-            } ],
-            "city" : "city",
-            "stateOrProvence" : "stateOrProvence",
-            "county" : "Alcona",
-            "addressLine1" : "addressLine1",
-            "addressLine2" : "addressLine2",
-            "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
-          },
           "notes" : [ {
             "timeStamp" : "2000-01-23T04:56:07.000+00:00",
             "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
@@ -7977,6 +7960,2025 @@
             "number" : 0,
             "numberType" : "Primary",
             "location" : "Home"
+          } ],
+          "locations" : [ {
+            "address" : {
+              "country" : "country",
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              } ],
+              "city" : "city",
+              "stateOrProvence" : "stateOrProvence",
+              "county" : "Alcona",
+              "addressLine1" : "addressLine1",
+              "addressLine2" : "addressLine2",
+              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            },
+            "notes" : [ {
+              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+              "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+              "content" : "content"
+            }, {
+              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+              "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+              "content" : "content"
+            } ],
+            "buildings" : [ {
+              "rooms" : [ {
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "kennels" : [ {
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "species" : "Dog",
+                  "name" : "name",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "maxOccupancy" : 0,
+                  "animals" : [ {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  }, {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  } ],
+                  "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                }, {
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "species" : "Dog",
+                  "name" : "name",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "maxOccupancy" : 0,
+                  "animals" : [ {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  }, {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  } ],
+                  "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                } ],
+                "name" : "name",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "buildingId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              }, {
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "kennels" : [ {
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "species" : "Dog",
+                  "name" : "name",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "maxOccupancy" : 0,
+                  "animals" : [ {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  }, {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  } ],
+                  "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                }, {
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "species" : "Dog",
+                  "name" : "name",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "maxOccupancy" : 0,
+                  "animals" : [ {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  }, {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  } ],
+                  "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                } ],
+                "name" : "name",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "buildingId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              } ],
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              } ],
+              "kennels" : [ {
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "species" : "Dog",
+                "name" : "name",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "maxOccupancy" : 0,
+                "animals" : [ {
+                  "ageIsEstimated" : true,
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "gender" : "Male",
+                  "species" : "Dog",
+                  "name" : "name",
+                  "bio" : "bio",
+                  "dateOfBirth" : "2000-01-23",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "age" : "8W, 6M, 2Y",
+                  "status" : "Adoption Pending"
+                }, {
+                  "ageIsEstimated" : true,
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "gender" : "Male",
+                  "species" : "Dog",
+                  "name" : "name",
+                  "bio" : "bio",
+                  "dateOfBirth" : "2000-01-23",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "age" : "8W, 6M, 2Y",
+                  "status" : "Adoption Pending"
+                } ],
+                "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              }, {
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "species" : "Dog",
+                "name" : "name",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "maxOccupancy" : 0,
+                "animals" : [ {
+                  "ageIsEstimated" : true,
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "gender" : "Male",
+                  "species" : "Dog",
+                  "name" : "name",
+                  "bio" : "bio",
+                  "dateOfBirth" : "2000-01-23",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "age" : "8W, 6M, 2Y",
+                  "status" : "Adoption Pending"
+                }, {
+                  "ageIsEstimated" : true,
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "gender" : "Male",
+                  "species" : "Dog",
+                  "name" : "name",
+                  "bio" : "bio",
+                  "dateOfBirth" : "2000-01-23",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "age" : "8W, 6M, 2Y",
+                  "status" : "Adoption Pending"
+                } ],
+                "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              } ],
+              "name" : "name",
+              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            }, {
+              "rooms" : [ {
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "kennels" : [ {
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "species" : "Dog",
+                  "name" : "name",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "maxOccupancy" : 0,
+                  "animals" : [ {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  }, {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  } ],
+                  "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                }, {
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "species" : "Dog",
+                  "name" : "name",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "maxOccupancy" : 0,
+                  "animals" : [ {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  }, {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  } ],
+                  "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                } ],
+                "name" : "name",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "buildingId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              }, {
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "kennels" : [ {
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "species" : "Dog",
+                  "name" : "name",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "maxOccupancy" : 0,
+                  "animals" : [ {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  }, {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  } ],
+                  "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                }, {
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "species" : "Dog",
+                  "name" : "name",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "maxOccupancy" : 0,
+                  "animals" : [ {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  }, {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  } ],
+                  "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                } ],
+                "name" : "name",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "buildingId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              } ],
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              } ],
+              "kennels" : [ {
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "species" : "Dog",
+                "name" : "name",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "maxOccupancy" : 0,
+                "animals" : [ {
+                  "ageIsEstimated" : true,
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "gender" : "Male",
+                  "species" : "Dog",
+                  "name" : "name",
+                  "bio" : "bio",
+                  "dateOfBirth" : "2000-01-23",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "age" : "8W, 6M, 2Y",
+                  "status" : "Adoption Pending"
+                }, {
+                  "ageIsEstimated" : true,
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "gender" : "Male",
+                  "species" : "Dog",
+                  "name" : "name",
+                  "bio" : "bio",
+                  "dateOfBirth" : "2000-01-23",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "age" : "8W, 6M, 2Y",
+                  "status" : "Adoption Pending"
+                } ],
+                "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              }, {
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "species" : "Dog",
+                "name" : "name",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "maxOccupancy" : 0,
+                "animals" : [ {
+                  "ageIsEstimated" : true,
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "gender" : "Male",
+                  "species" : "Dog",
+                  "name" : "name",
+                  "bio" : "bio",
+                  "dateOfBirth" : "2000-01-23",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "age" : "8W, 6M, 2Y",
+                  "status" : "Adoption Pending"
+                }, {
+                  "ageIsEstimated" : true,
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "gender" : "Male",
+                  "species" : "Dog",
+                  "name" : "name",
+                  "bio" : "bio",
+                  "dateOfBirth" : "2000-01-23",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "age" : "8W, 6M, 2Y",
+                  "status" : "Adoption Pending"
+                } ],
+                "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              } ],
+              "name" : "name",
+              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            } ],
+            "kennels" : [ {
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              } ],
+              "species" : "Dog",
+              "name" : "name",
+              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+              "maxOccupancy" : 0,
+              "animals" : [ {
+                "ageIsEstimated" : true,
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "gender" : "Male",
+                "species" : "Dog",
+                "name" : "name",
+                "bio" : "bio",
+                "dateOfBirth" : "2000-01-23",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              }, {
+                "ageIsEstimated" : true,
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "gender" : "Male",
+                "species" : "Dog",
+                "name" : "name",
+                "bio" : "bio",
+                "dateOfBirth" : "2000-01-23",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              } ],
+              "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            }, {
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              } ],
+              "species" : "Dog",
+              "name" : "name",
+              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+              "maxOccupancy" : 0,
+              "animals" : [ {
+                "ageIsEstimated" : true,
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "gender" : "Male",
+                "species" : "Dog",
+                "name" : "name",
+                "bio" : "bio",
+                "dateOfBirth" : "2000-01-23",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              }, {
+                "ageIsEstimated" : true,
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "gender" : "Male",
+                "species" : "Dog",
+                "name" : "name",
+                "bio" : "bio",
+                "dateOfBirth" : "2000-01-23",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              } ],
+              "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            } ],
+            "name" : "name",
+            "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+            "enclosures" : [ {
+              "unitOfHeightMeasure" : "inches",
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              } ],
+              "size" : 0.8008281904610115,
+              "unitOfAreaMeasure" : "sq. feet",
+              "heightInFeet" : 6.027456183070403,
+              "name" : "name",
+              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            }, {
+              "unitOfHeightMeasure" : "inches",
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              } ],
+              "size" : 0.8008281904610115,
+              "unitOfAreaMeasure" : "sq. feet",
+              "heightInFeet" : 6.027456183070403,
+              "name" : "name",
+              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            } ]
+          }, {
+            "address" : {
+              "country" : "country",
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              } ],
+              "city" : "city",
+              "stateOrProvence" : "stateOrProvence",
+              "county" : "Alcona",
+              "addressLine1" : "addressLine1",
+              "addressLine2" : "addressLine2",
+              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            },
+            "notes" : [ {
+              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+              "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+              "content" : "content"
+            }, {
+              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+              "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+              "content" : "content"
+            } ],
+            "buildings" : [ {
+              "rooms" : [ {
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "kennels" : [ {
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "species" : "Dog",
+                  "name" : "name",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "maxOccupancy" : 0,
+                  "animals" : [ {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  }, {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  } ],
+                  "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                }, {
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "species" : "Dog",
+                  "name" : "name",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "maxOccupancy" : 0,
+                  "animals" : [ {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  }, {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  } ],
+                  "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                } ],
+                "name" : "name",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "buildingId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              }, {
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "kennels" : [ {
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "species" : "Dog",
+                  "name" : "name",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "maxOccupancy" : 0,
+                  "animals" : [ {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  }, {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  } ],
+                  "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                }, {
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "species" : "Dog",
+                  "name" : "name",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "maxOccupancy" : 0,
+                  "animals" : [ {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  }, {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  } ],
+                  "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                } ],
+                "name" : "name",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "buildingId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              } ],
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              } ],
+              "kennels" : [ {
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "species" : "Dog",
+                "name" : "name",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "maxOccupancy" : 0,
+                "animals" : [ {
+                  "ageIsEstimated" : true,
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "gender" : "Male",
+                  "species" : "Dog",
+                  "name" : "name",
+                  "bio" : "bio",
+                  "dateOfBirth" : "2000-01-23",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "age" : "8W, 6M, 2Y",
+                  "status" : "Adoption Pending"
+                }, {
+                  "ageIsEstimated" : true,
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "gender" : "Male",
+                  "species" : "Dog",
+                  "name" : "name",
+                  "bio" : "bio",
+                  "dateOfBirth" : "2000-01-23",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "age" : "8W, 6M, 2Y",
+                  "status" : "Adoption Pending"
+                } ],
+                "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              }, {
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "species" : "Dog",
+                "name" : "name",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "maxOccupancy" : 0,
+                "animals" : [ {
+                  "ageIsEstimated" : true,
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "gender" : "Male",
+                  "species" : "Dog",
+                  "name" : "name",
+                  "bio" : "bio",
+                  "dateOfBirth" : "2000-01-23",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "age" : "8W, 6M, 2Y",
+                  "status" : "Adoption Pending"
+                }, {
+                  "ageIsEstimated" : true,
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "gender" : "Male",
+                  "species" : "Dog",
+                  "name" : "name",
+                  "bio" : "bio",
+                  "dateOfBirth" : "2000-01-23",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "age" : "8W, 6M, 2Y",
+                  "status" : "Adoption Pending"
+                } ],
+                "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              } ],
+              "name" : "name",
+              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            }, {
+              "rooms" : [ {
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "kennels" : [ {
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "species" : "Dog",
+                  "name" : "name",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "maxOccupancy" : 0,
+                  "animals" : [ {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  }, {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  } ],
+                  "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                }, {
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "species" : "Dog",
+                  "name" : "name",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "maxOccupancy" : 0,
+                  "animals" : [ {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  }, {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  } ],
+                  "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                } ],
+                "name" : "name",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "buildingId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              }, {
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "kennels" : [ {
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "species" : "Dog",
+                  "name" : "name",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "maxOccupancy" : 0,
+                  "animals" : [ {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  }, {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  } ],
+                  "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                }, {
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "species" : "Dog",
+                  "name" : "name",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "maxOccupancy" : 0,
+                  "animals" : [ {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  }, {
+                    "ageIsEstimated" : true,
+                    "notes" : [ {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    }, {
+                      "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                      "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                      "content" : "content"
+                    } ],
+                    "gender" : "Male",
+                    "species" : "Dog",
+                    "name" : "name",
+                    "bio" : "bio",
+                    "dateOfBirth" : "2000-01-23",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "age" : "8W, 6M, 2Y",
+                    "status" : "Adoption Pending"
+                  } ],
+                  "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+                } ],
+                "name" : "name",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "buildingId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              } ],
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              } ],
+              "kennels" : [ {
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "species" : "Dog",
+                "name" : "name",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "maxOccupancy" : 0,
+                "animals" : [ {
+                  "ageIsEstimated" : true,
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "gender" : "Male",
+                  "species" : "Dog",
+                  "name" : "name",
+                  "bio" : "bio",
+                  "dateOfBirth" : "2000-01-23",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "age" : "8W, 6M, 2Y",
+                  "status" : "Adoption Pending"
+                }, {
+                  "ageIsEstimated" : true,
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "gender" : "Male",
+                  "species" : "Dog",
+                  "name" : "name",
+                  "bio" : "bio",
+                  "dateOfBirth" : "2000-01-23",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "age" : "8W, 6M, 2Y",
+                  "status" : "Adoption Pending"
+                } ],
+                "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              }, {
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "species" : "Dog",
+                "name" : "name",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "maxOccupancy" : 0,
+                "animals" : [ {
+                  "ageIsEstimated" : true,
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "gender" : "Male",
+                  "species" : "Dog",
+                  "name" : "name",
+                  "bio" : "bio",
+                  "dateOfBirth" : "2000-01-23",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "age" : "8W, 6M, 2Y",
+                  "status" : "Adoption Pending"
+                }, {
+                  "ageIsEstimated" : true,
+                  "notes" : [ {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  }, {
+                    "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                    "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                    "content" : "content"
+                  } ],
+                  "gender" : "Male",
+                  "species" : "Dog",
+                  "name" : "name",
+                  "bio" : "bio",
+                  "dateOfBirth" : "2000-01-23",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "age" : "8W, 6M, 2Y",
+                  "status" : "Adoption Pending"
+                } ],
+                "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+              } ],
+              "name" : "name",
+              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            } ],
+            "kennels" : [ {
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              } ],
+              "species" : "Dog",
+              "name" : "name",
+              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+              "maxOccupancy" : 0,
+              "animals" : [ {
+                "ageIsEstimated" : true,
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "gender" : "Male",
+                "species" : "Dog",
+                "name" : "name",
+                "bio" : "bio",
+                "dateOfBirth" : "2000-01-23",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              }, {
+                "ageIsEstimated" : true,
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "gender" : "Male",
+                "species" : "Dog",
+                "name" : "name",
+                "bio" : "bio",
+                "dateOfBirth" : "2000-01-23",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              } ],
+              "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            }, {
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              } ],
+              "species" : "Dog",
+              "name" : "name",
+              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+              "maxOccupancy" : 0,
+              "animals" : [ {
+                "ageIsEstimated" : true,
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "gender" : "Male",
+                "species" : "Dog",
+                "name" : "name",
+                "bio" : "bio",
+                "dateOfBirth" : "2000-01-23",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              }, {
+                "ageIsEstimated" : true,
+                "notes" : [ {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                }, {
+                  "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                  "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                  "content" : "content"
+                } ],
+                "gender" : "Male",
+                "species" : "Dog",
+                "name" : "name",
+                "bio" : "bio",
+                "dateOfBirth" : "2000-01-23",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              } ],
+              "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            } ],
+            "name" : "name",
+            "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+            "enclosures" : [ {
+              "unitOfHeightMeasure" : "inches",
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              } ],
+              "size" : 0.8008281904610115,
+              "unitOfAreaMeasure" : "sq. feet",
+              "heightInFeet" : 6.027456183070403,
+              "name" : "name",
+              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            }, {
+              "unitOfHeightMeasure" : "inches",
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "addedByStaff" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "content" : "content"
+              } ],
+              "size" : 0.8008281904610115,
+              "unitOfAreaMeasure" : "sq. feet",
+              "heightInFeet" : 6.027456183070403,
+              "name" : "name",
+              "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            } ]
           } ],
           "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
         }

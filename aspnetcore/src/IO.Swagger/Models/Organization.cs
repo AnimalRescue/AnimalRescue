@@ -41,10 +41,10 @@ namespace IO.Swagger.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets Address
+        /// Gets or Sets Locations
         /// </summary>
-        [DataMember(Name="address")]
-        public Address Address { get; set; }
+        [DataMember(Name="locations")]
+        public List<Location> Locations { get; set; }
 
         /// <summary>
         /// Gets or Sets Phones
@@ -68,7 +68,7 @@ namespace IO.Swagger.Models
             sb.Append("class Organization {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Address: ").Append(Address).Append("\n");
+            sb.Append("  Locations: ").Append(Locations).Append("\n");
             sb.Append("  Phones: ").Append(Phones).Append("\n");
             sb.Append("  Notes: ").Append(Notes).Append("\n");
             sb.Append("}\n");
@@ -118,9 +118,9 @@ namespace IO.Swagger.Models
                     Name.Equals(other.Name)
                 ) && 
                 (
-                    Address == other.Address ||
-                    Address != null &&
-                    Address.Equals(other.Address)
+                    Locations == other.Locations ||
+                    Locations != null &&
+                    Locations.SequenceEqual(other.Locations)
                 ) && 
                 (
                     Phones == other.Phones ||
@@ -148,8 +148,8 @@ namespace IO.Swagger.Models
                     hashCode = hashCode * 59 + Id.GetHashCode();
                     if (Name != null)
                     hashCode = hashCode * 59 + Name.GetHashCode();
-                    if (Address != null)
-                    hashCode = hashCode * 59 + Address.GetHashCode();
+                    if (Locations != null)
+                    hashCode = hashCode * 59 + Locations.GetHashCode();
                     if (Phones != null)
                     hashCode = hashCode * 59 + Phones.GetHashCode();
                     if (Notes != null)
