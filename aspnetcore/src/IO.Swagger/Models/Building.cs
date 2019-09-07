@@ -40,6 +40,12 @@ namespace IO.Swagger.Models
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or Sets Location
+        /// </summary>
+        [DataMember(Name="location")]
+        public Location Location { get; set; }
+
+        /// <summary>
         /// Gets or Sets Rooms
         /// </summary>
         [DataMember(Name="rooms")]
@@ -67,6 +73,7 @@ namespace IO.Swagger.Models
             sb.Append("class Building {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Location: ").Append(Location).Append("\n");
             sb.Append("  Rooms: ").Append(Rooms).Append("\n");
             sb.Append("  Kennels: ").Append(Kennels).Append("\n");
             sb.Append("  Notes: ").Append(Notes).Append("\n");
@@ -117,6 +124,11 @@ namespace IO.Swagger.Models
                     Name.Equals(other.Name)
                 ) && 
                 (
+                    Location == other.Location ||
+                    Location != null &&
+                    Location.Equals(other.Location)
+                ) && 
+                (
                     Rooms == other.Rooms ||
                     Rooms != null &&
                     Rooms.SequenceEqual(other.Rooms)
@@ -147,6 +159,8 @@ namespace IO.Swagger.Models
                     hashCode = hashCode * 59 + Id.GetHashCode();
                     if (Name != null)
                     hashCode = hashCode * 59 + Name.GetHashCode();
+                    if (Location != null)
+                    hashCode = hashCode * 59 + Location.GetHashCode();
                     if (Rooms != null)
                     hashCode = hashCode * 59 + Rooms.GetHashCode();
                     if (Kennels != null)
