@@ -2103,7 +2103,7 @@
         }, {
           "name" : "fromDate",
           "in" : "query",
-          "description" : "Specifies the first to return",
+          "description" : "Specifies the first date to return in a query",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -2114,7 +2114,7 @@
         }, {
           "name" : "toDate",
           "in" : "query",
-          "description" : "Specifies the last date to return",
+          "description" : "Specifies the last date to include in a query",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -2179,7 +2179,7 @@
         }, {
           "name" : "fromDate",
           "in" : "query",
-          "description" : "Specifies the first to return",
+          "description" : "Specifies the first date to return in a query",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -2190,7 +2190,7 @@
         }, {
           "name" : "toDate",
           "in" : "query",
-          "description" : "Specifies the last date to return",
+          "description" : "Specifies the last date to include in a query",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -2331,7 +2331,7 @@
         }, {
           "name" : "fromDate",
           "in" : "query",
-          "description" : "Specifies the first to return",
+          "description" : "Specifies the first date to return in a query",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -2342,7 +2342,7 @@
         }, {
           "name" : "toDate",
           "in" : "query",
-          "description" : "Specifies the last date to return",
+          "description" : "Specifies the last date to include in a query",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -2623,7 +2623,7 @@
         }, {
           "name" : "fromDate",
           "in" : "query",
-          "description" : "Specifies the first to return",
+          "description" : "Specifies the first date to return in a query",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -2634,7 +2634,7 @@
         }, {
           "name" : "toDate",
           "in" : "query",
-          "description" : "Specifies the last date to return",
+          "description" : "Specifies the last date to include in a query",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -2915,7 +2915,7 @@
         }, {
           "name" : "fromDate",
           "in" : "query",
-          "description" : "Specifies the first to return",
+          "description" : "Specifies the first date to return in a query",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -2926,7 +2926,7 @@
         }, {
           "name" : "toDate",
           "in" : "query",
-          "description" : "Specifies the last date to return",
+          "description" : "Specifies the last date to include in a query",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -3186,7 +3186,7 @@
         }, {
           "name" : "fromDate",
           "in" : "query",
-          "description" : "Specifies the first to return",
+          "description" : "Specifies the first date to return in a query",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -3197,7 +3197,7 @@
         }, {
           "name" : "toDate",
           "in" : "query",
-          "description" : "Specifies the last date to return",
+          "description" : "Specifies the last date to include in a query",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -3439,7 +3439,7 @@
         }, {
           "name" : "fromDate",
           "in" : "query",
-          "description" : "Specifies the first to return",
+          "description" : "Specifies the first date to return in a query",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -3450,7 +3450,7 @@
         }, {
           "name" : "toDate",
           "in" : "query",
-          "description" : "Specifies the last date to return",
+          "description" : "Specifies the last date to include in a query",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -3672,7 +3672,7 @@
         }, {
           "name" : "fromDate",
           "in" : "query",
-          "description" : "Specifies the first to return",
+          "description" : "Specifies the first date to return in a query",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -3683,7 +3683,7 @@
         }, {
           "name" : "toDate",
           "in" : "query",
-          "description" : "Specifies the last date to return",
+          "description" : "Specifies the last date to include in a query",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -3944,7 +3944,7 @@
         }, {
           "name" : "fromDate",
           "in" : "query",
-          "description" : "Specifies the first to return",
+          "description" : "Specifies the first date to return in a query",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -3955,7 +3955,7 @@
         }, {
           "name" : "toDate",
           "in" : "query",
-          "description" : "Specifies the last date to return",
+          "description" : "Specifies the last date to include in a query",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -4525,6 +4525,9 @@
             "notes" : [ null, null ],
             "buildings" : [ null, null ],
             "kennels" : [ {
+              "lengthInInches" : 5,
+              "heightInInches" : 2,
+              "widthInInches" : 5,
               "notes" : [ null, null ],
               "species" : "Dog",
               "name" : "name",
@@ -4550,6 +4553,9 @@
               } ],
               "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
             }, {
+              "lengthInInches" : 5,
+              "heightInInches" : 2,
+              "widthInInches" : 5,
               "notes" : [ null, null ],
               "species" : "Dog",
               "name" : "name",
@@ -5144,6 +5150,9 @@
             "notes" : [ null, null ],
             "buildings" : [ null, null ],
             "kennels" : [ {
+              "lengthInInches" : 5,
+              "heightInInches" : 2,
+              "widthInInches" : 5,
               "notes" : [ null, null ],
               "species" : "Dog",
               "name" : "name",
@@ -5169,6 +5178,9 @@
               } ],
               "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
             }, {
+              "lengthInInches" : 5,
+              "heightInInches" : 2,
+              "widthInInches" : 5,
               "notes" : [ null, null ],
               "species" : "Dog",
               "name" : "name",
@@ -5323,6 +5335,15 @@
           "maxOccupancy" : {
             "type" : "integer"
           },
+          "lengthInInches" : {
+            "type" : "integer"
+          },
+          "widthInInches" : {
+            "type" : "integer"
+          },
+          "heightInInches" : {
+            "type" : "integer"
+          },
           "animals" : {
             "type" : "array",
             "items" : {
@@ -5337,6 +5358,9 @@
           }
         },
         "example" : {
+          "lengthInInches" : 5,
+          "heightInInches" : 2,
+          "widthInInches" : 5,
           "notes" : [ null, null ],
           "species" : "Dog",
           "name" : "name",
@@ -5420,6 +5444,9 @@
           "notes" : [ null, null ],
           "buildings" : [ null, null ],
           "kennels" : [ {
+            "lengthInInches" : 5,
+            "heightInInches" : 2,
+            "widthInInches" : 5,
             "notes" : [ null, null ],
             "species" : "Dog",
             "name" : "name",
@@ -5445,6 +5472,9 @@
             } ],
             "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
           }, {
+            "lengthInInches" : 5,
+            "heightInInches" : 2,
+            "widthInInches" : 5,
             "notes" : [ null, null ],
             "species" : "Dog",
             "name" : "name",
@@ -5620,6 +5650,9 @@
             "notes" : [ null, null ],
             "buildings" : [ null, null ],
             "kennels" : [ {
+              "lengthInInches" : 5,
+              "heightInInches" : 2,
+              "widthInInches" : 5,
               "notes" : [ null, null ],
               "species" : "Dog",
               "name" : "name",
@@ -5645,6 +5678,9 @@
               } ],
               "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
             }, {
+              "lengthInInches" : 5,
+              "heightInInches" : 2,
+              "widthInInches" : 5,
               "notes" : [ null, null ],
               "species" : "Dog",
               "name" : "name",
@@ -5705,6 +5741,9 @@
             "notes" : [ null, null ],
             "buildings" : [ null, null ],
             "kennels" : [ {
+              "lengthInInches" : 5,
+              "heightInInches" : 2,
+              "widthInInches" : 5,
               "notes" : [ null, null ],
               "species" : "Dog",
               "name" : "name",
@@ -5730,6 +5769,9 @@
               } ],
               "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
             }, {
+              "lengthInInches" : 5,
+              "heightInInches" : 2,
+              "widthInInches" : 5,
               "notes" : [ null, null ],
               "species" : "Dog",
               "name" : "name",
@@ -6092,7 +6134,7 @@
       "FromDate" : {
         "name" : "fromDate",
         "in" : "query",
-        "description" : "Specifies the first to return",
+        "description" : "Specifies the first date to return in a query",
         "required" : false,
         "style" : "form",
         "explode" : true,
@@ -6126,7 +6168,7 @@
       "ToDate" : {
         "name" : "toDate",
         "in" : "query",
-        "description" : "Specifies the last date to return",
+        "description" : "Specifies the last date to include in a query",
         "required" : false,
         "style" : "form",
         "explode" : true,

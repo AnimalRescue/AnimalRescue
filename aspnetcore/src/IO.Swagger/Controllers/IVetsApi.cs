@@ -319,8 +319,8 @@ namespace IO.Swagger.Controllers
         /// <remarks>Base endopoints returns and empty Intake array</remarks>
         /// <param name="limit">Limits the number of items on a page</param>
         /// <param name="offset">Specifies the page number of the artists to be displayed</param>
-        /// <param name="fromDate">Specifies the first to return</param>
-        /// <param name="toDate">Specifies the last date to return</param>
+        /// <param name="fromDate">Specifies the first date to return in a query</param>
+        /// <param name="toDate">Specifies the last date to include in a query</param>
         /// <response code="200">OK</response>
         IActionResult IntakeInformation([FromQuery]int? limit, [FromQuery]int? offset, [FromQuery]DateTime? fromDate, [FromQuery]DateTime? toDate);
 
@@ -348,8 +348,8 @@ namespace IO.Swagger.Controllers
         /// <remarks>With no parameters, returns all Adoptions at the Rescue </remarks>
         /// <param name="limit">Limits the number of items on a page</param>
         /// <param name="offset">Specifies the page number of the artists to be displayed</param>
-        /// <param name="fromDate">Specifies the first to return</param>
-        /// <param name="toDate">Specifies the last date to return</param>
+        /// <param name="fromDate">Specifies the first date to return in a query</param>
+        /// <param name="toDate">Specifies the last date to include in a query</param>
         /// <response code="200">ok</response>
         /// <response code="204">no results found</response>
         /// <response code="400">bad request - check parameter format</response>
@@ -362,8 +362,8 @@ namespace IO.Swagger.Controllers
         /// <remarks>With no parameters, returns all cats currently in the shelter. Allows filters. </remarks>
         /// <param name="limit">Limits the number of items on a page</param>
         /// <param name="offset">Specifies the page number of the artists to be displayed</param>
-        /// <param name="fromDate">Specifies the first to return</param>
-        /// <param name="toDate">Specifies the last date to return</param>
+        /// <param name="fromDate">Specifies the first date to return in a query</param>
+        /// <param name="toDate">Specifies the last date to include in a query</param>
         /// <param name="name">Specifies a matching pattern for the name</param>
         /// <param name="adoptionStatus">Specifies one of the valid AdoptionStatus values</param>
         /// <param name="breed">breed of cat to retrieve</param>
@@ -381,8 +381,8 @@ namespace IO.Swagger.Controllers
         /// <remarks>With no parameters, returns all contacts associated with the Rescue. Allows filters. </remarks>
         /// <param name="limit">Limits the number of items on a page</param>
         /// <param name="offset">Specifies the page number of the artists to be displayed</param>
-        /// <param name="fromDate">Specifies the first to return</param>
-        /// <param name="toDate">Specifies the last date to return</param>
+        /// <param name="fromDate">Specifies the first date to return in a query</param>
+        /// <param name="toDate">Specifies the last date to include in a query</param>
         /// <param name="searchString">pass an optional search string for looking up Fosters</param>
         /// <param name="gender">One of the valid Gender enumeration values</param>
         /// <response code="200">ok</response>
@@ -397,8 +397,8 @@ namespace IO.Swagger.Controllers
         /// <remarks>With no parameters, returns all dogss currently in the shelter. Allows filters. </remarks>
         /// <param name="limit">Limits the number of items on a page</param>
         /// <param name="offset">Specifies the page number of the artists to be displayed</param>
-        /// <param name="fromDate">Specifies the first to return</param>
-        /// <param name="toDate">Specifies the last date to return</param>
+        /// <param name="fromDate">Specifies the first date to return in a query</param>
+        /// <param name="toDate">Specifies the last date to include in a query</param>
         /// <param name="name">Specifies a matching pattern for the name</param>
         /// <param name="adoptionStatus">Specifies one of the valid AdoptionStatus values</param>
         /// <param name="breed">breed of dog to retrieve</param>
@@ -417,8 +417,8 @@ namespace IO.Swagger.Controllers
         /// <param name="searchString">pass an optional search string for looking up Fosters</param>
         /// <param name="limit">Limits the number of items on a page</param>
         /// <param name="offset">Specifies the page number of the artists to be displayed</param>
-        /// <param name="fromDate">Specifies the first to return</param>
-        /// <param name="toDate">Specifies the last date to return</param>
+        /// <param name="fromDate">Specifies the first date to return in a query</param>
+        /// <param name="toDate">Specifies the last date to include in a query</param>
         /// <response code="200">search results matching specified criteria</response>
         /// <response code="400">bad input parameter</response>
         IActionResult SearchFosters([FromQuery]string searchString, [FromQuery]int? limit, [FromQuery]int? offset, [FromQuery]DateTime? fromDate, [FromQuery]DateTime? toDate);
@@ -440,8 +440,8 @@ namespace IO.Swagger.Controllers
         /// <remarks>With no parameters, returns all Organizations associated with the Rescue. Allows filters. </remarks>
         /// <param name="limit">Limits the number of items on a page</param>
         /// <param name="offset">Specifies the page number of the artists to be displayed</param>
-        /// <param name="fromDate">Specifies the first to return</param>
-        /// <param name="toDate">Specifies the last date to return</param>
+        /// <param name="fromDate">Specifies the first date to return in a query</param>
+        /// <param name="toDate">Specifies the last date to include in a query</param>
         /// <param name="name">Specifies a matching pattern for the name</param>
         /// <param name="gender">Specifies on of the valid Gender</param>
         /// <response code="200">ok</response>
@@ -457,8 +457,8 @@ namespace IO.Swagger.Controllers
         /// <param name="searchString">pass an optional search string for looking up Fosters</param>
         /// <param name="limit">Limits the number of items on a page</param>
         /// <param name="offset">Specifies the page number of the artists to be displayed</param>
-        /// <param name="fromDate">Specifies the first to return</param>
-        /// <param name="toDate">Specifies the last date to return</param>
+        /// <param name="fromDate">Specifies the first date to return in a query</param>
+        /// <param name="toDate">Specifies the last date to include in a query</param>
         /// <response code="200">search results matching specified criteria</response>
         /// <response code="400">bad input parameter</response>
         IActionResult SearchVolunteers([FromQuery]string searchString, [FromQuery]int? limit, [FromQuery]int? offset, [FromQuery]DateTime? fromDate, [FromQuery]DateTime? toDate);

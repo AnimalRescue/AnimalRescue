@@ -77,6 +77,24 @@ namespace IO.Swagger.Models
         public int? MaxOccupancy { get; set; }
 
         /// <summary>
+        /// Gets or Sets LengthInInches
+        /// </summary>
+        [DataMember(Name="lengthInInches")]
+        public int? LengthInInches { get; set; }
+
+        /// <summary>
+        /// Gets or Sets WidthInInches
+        /// </summary>
+        [DataMember(Name="widthInInches")]
+        public int? WidthInInches { get; set; }
+
+        /// <summary>
+        /// Gets or Sets HeightInInches
+        /// </summary>
+        [DataMember(Name="heightInInches")]
+        public int? HeightInInches { get; set; }
+
+        /// <summary>
         /// Gets or Sets Animals
         /// </summary>
         [DataMember(Name="animals")]
@@ -101,6 +119,9 @@ namespace IO.Swagger.Models
             sb.Append("  RoomId: ").Append(RoomId).Append("\n");
             sb.Append("  Species: ").Append(Species).Append("\n");
             sb.Append("  MaxOccupancy: ").Append(MaxOccupancy).Append("\n");
+            sb.Append("  LengthInInches: ").Append(LengthInInches).Append("\n");
+            sb.Append("  WidthInInches: ").Append(WidthInInches).Append("\n");
+            sb.Append("  HeightInInches: ").Append(HeightInInches).Append("\n");
             sb.Append("  Animals: ").Append(Animals).Append("\n");
             sb.Append("  Notes: ").Append(Notes).Append("\n");
             sb.Append("}\n");
@@ -165,6 +186,21 @@ namespace IO.Swagger.Models
                     MaxOccupancy.Equals(other.MaxOccupancy)
                 ) && 
                 (
+                    LengthInInches == other.LengthInInches ||
+                    LengthInInches != null &&
+                    LengthInInches.Equals(other.LengthInInches)
+                ) && 
+                (
+                    WidthInInches == other.WidthInInches ||
+                    WidthInInches != null &&
+                    WidthInInches.Equals(other.WidthInInches)
+                ) && 
+                (
+                    HeightInInches == other.HeightInInches ||
+                    HeightInInches != null &&
+                    HeightInInches.Equals(other.HeightInInches)
+                ) && 
+                (
                     Animals == other.Animals ||
                     Animals != null &&
                     Animals.SequenceEqual(other.Animals)
@@ -196,6 +232,12 @@ namespace IO.Swagger.Models
                     hashCode = hashCode * 59 + Species.GetHashCode();
                     if (MaxOccupancy != null)
                     hashCode = hashCode * 59 + MaxOccupancy.GetHashCode();
+                    if (LengthInInches != null)
+                    hashCode = hashCode * 59 + LengthInInches.GetHashCode();
+                    if (WidthInInches != null)
+                    hashCode = hashCode * 59 + WidthInInches.GetHashCode();
+                    if (HeightInInches != null)
+                    hashCode = hashCode * 59 + HeightInInches.GetHashCode();
                     if (Animals != null)
                     hashCode = hashCode * 59 + Animals.GetHashCode();
                     if (Notes != null)
