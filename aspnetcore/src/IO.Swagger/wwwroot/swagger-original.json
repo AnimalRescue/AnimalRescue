@@ -203,7 +203,7 @@
           }
         } ],
         "requestBody" : {
-          "$ref" : "#/components/requestBodies/Building"
+          "$ref" : "#/components/requestBodies/BuildingBody"
         },
         "responses" : {
           "200" : {
@@ -669,7 +669,7 @@
           }
         } ],
         "requestBody" : {
-          "$ref" : "#/components/requestBodies/Kennel"
+          "$ref" : "#/components/requestBodies/KennelBody"
         },
         "responses" : {
           "200" : {
@@ -726,7 +726,7 @@
           }
         } ],
         "requestBody" : {
-          "$ref" : "#/components/requestBodies/Kennel"
+          "$ref" : "#/components/requestBodies/KennelBody"
         },
         "responses" : {
           "200" : {
@@ -1052,7 +1052,7 @@
           }
         } ],
         "requestBody" : {
-          "$ref" : "#/components/requestBodies/Building"
+          "$ref" : "#/components/requestBodies/BuildingBody"
         },
         "responses" : {
           "200" : {
@@ -1894,7 +1894,7 @@
           }
         } ],
         "requestBody" : {
-          "$ref" : "#/components/requestBodies/Kennel"
+          "$ref" : "#/components/requestBodies/KennelBody"
         },
         "responses" : {
           "200" : {
@@ -2010,7 +2010,7 @@
           }
         } ],
         "requestBody" : {
-          "$ref" : "#/components/requestBodies/Kennel"
+          "$ref" : "#/components/requestBodies/KennelBody"
         },
         "responses" : {
           "200" : {
@@ -4151,7 +4151,7 @@
   },
   "components" : {
     "schemas" : {
-      "PatchBody" : {
+      "PatchSet" : {
         "type" : "array",
         "items" : {
           "$ref" : "#/components/schemas/PatchDocument"
@@ -6190,7 +6190,7 @@
       }
     },
     "requestBodies" : {
-      "Kennel" : {
+      "KennelBody" : {
         "description" : "partial json object of Kennel with fields to patch",
         "content" : {
           "application/json" : {
@@ -6201,7 +6201,7 @@
         },
         "required" : true
       },
-      "Building" : {
+      "BuildingBody" : {
         "description" : "unique id of Building to update",
         "content" : {
           "application/json" : {
@@ -6216,7 +6216,7 @@
         "content" : {
           "application/json-patch+json" : {
             "schema" : {
-              "$ref" : "#/components/schemas/PatchBody"
+              "$ref" : "#/components/schemas/PatchSet"
             }
           }
         }
