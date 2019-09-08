@@ -67,16 +67,18 @@ namespace IO.Swagger.Controllers
         IActionResult GetBuildingById([FromRoute][Required]Guid? id, [FromQuery]int? limit, [FromQuery]int? offset);
 
         /// <summary>
-        /// searches all Buildings for the Rescue
+        /// Returns a (filtered) collection of buildings affiliated withthe Rescue
         /// </summary>
-        /// <remarks>With no parameters, returns all Buildings for the Rescue </remarks>
+        /// <remarks>With no parameters, returns all Buildings affiliated with the Rescue </remarks>
         /// <param name="limit">Limits the number of items on a page</param>
         /// <param name="offset">Specifies the page number of the artists to be displayed</param>
+        /// <param name="fromDate">Specifies the first date to return in a query</param>
+        /// <param name="toDate">Specifies the last date to include in a query</param>
         /// <response code="200">ok</response>
         /// <response code="204">no results found</response>
         /// <response code="400">bad request - check parameter format</response>
         /// <response code="401">unauthorized request for this user</response>
-        IActionResult GetBuildings([FromQuery]int? limit, [FromQuery]int? offset);
+        IActionResult GetBuildings([FromQuery]int? limit, [FromQuery]int? offset, [FromQuery]DateTime? fromDate, [FromQuery]DateTime? toDate);
 
         /// <summary>
         /// returns all buildings at a Location

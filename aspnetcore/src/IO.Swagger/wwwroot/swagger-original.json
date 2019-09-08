@@ -51,8 +51,8 @@
     "/buildings" : {
       "get" : {
         "tags" : [ "admins", "public", "staff", "vets" ],
-        "summary" : "searches all Buildings for the Rescue",
-        "description" : "With no parameters, returns all Buildings for the Rescue\n",
+        "summary" : "Returns a (filtered) collection of buildings affiliated withthe Rescue",
+        "description" : "With no parameters, returns all Buildings affiliated with the Rescue\n",
         "operationId" : "getBuildings",
         "parameters" : [ {
           "name" : "limit",
@@ -73,6 +73,28 @@
           "explode" : true,
           "schema" : {
             "type" : "integer"
+          }
+        }, {
+          "name" : "fromDate",
+          "in" : "query",
+          "description" : "Specifies the first date to return in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "toDate",
+          "in" : "query",
+          "description" : "Specifies the last date to include in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
           }
         } ],
         "responses" : {
