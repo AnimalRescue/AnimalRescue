@@ -1,0 +1,6266 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "AnimalRescue API",
+    "description" : "API for OSS AnimalRescue",
+    "contact" : {
+      "email" : "jlgartee@gmail.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version" : "1.0.0-oas3"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/jgartee/AnimalRescue/v1"
+  }, {
+    "url" : "https://animalrescuedev.azurewebsites.net/V1"
+  }, {
+    "url" : "https://animalrescuedemo.azurewebsites.net/V1"
+  }, {
+    "url" : "https://animalrescue.azurewebsites.net/V1"
+  } ],
+  "tags" : [ {
+    "name" : "admins",
+    "description" : "Secured Admin-only calls"
+  }, {
+    "name" : "public",
+    "description" : "Unsecured Public access operations"
+  }, {
+    "name" : "staff",
+    "description" : "Secured Staff access operations"
+  }, {
+    "name" : "vets",
+    "description" : "Secured Vet and Vet Tech access operations"
+  } ],
+  "paths" : {
+    "/health" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "reports whether the API is up and running",
+        "description" : "used to check on the api status, but returns no content",
+        "operationId" : "getApiHealth",
+        "responses" : {
+          "204" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/buildings" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "Returns a (filtered) collection of buildings affiliated withthe Rescue",
+        "description" : "With no parameters, returns all Buildings affiliated with the Rescue\n",
+        "operationId" : "getBuildings",
+        "parameters" : [ {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "fromDate",
+          "in" : "query",
+          "description" : "Specifies the first date to return in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "toDate",
+          "in" : "query",
+          "description" : "Specifies the last date to include in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Building"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "admins" ],
+        "summary" : "adds a Building to the rescue",
+        "description" : "Adds a new Building to the Rescue",
+        "operationId" : "addBuilding",
+        "requestBody" : {
+          "description" : "Building to add to the Rescue",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Building"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      }
+    },
+    "/buildings/{id}" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "returns a specific Building for the Rescue",
+        "description" : "Returns details about a specific Building\n",
+        "operationId" : "getBuildingById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Building"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "admins" ],
+        "summary" : "updates a Building by id",
+        "description" : "Updates an existing Building by id",
+        "operationId" : "updateBuildingById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/BuildingBody"
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "admins" ],
+        "summary" : "deletes a Building by id",
+        "description" : "Deletes an existing Building by id",
+        "operationId" : "deleteBuildingById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "updates a Building by id",
+        "description" : "Updates an existing Building by id with only elements that are changing",
+        "operationId" : "patchBuildingById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "unique id of Building to patch",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "partial json object of Building with fields to patch",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Building"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          }
+        }
+      }
+    },
+    "/enclosures" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "searches all Enclosures for the Rescue",
+        "description" : "With no parameters, returns all Enclosures for the Rescue\n",
+        "operationId" : "getEnclosures",
+        "parameters" : [ {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Enclosure"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "admins" ],
+        "summary" : "adds a Enclosure to the rescue",
+        "description" : "Adds a new Enclosure to the Rescue",
+        "operationId" : "addEnclosure",
+        "requestBody" : {
+          "description" : "Enclosure to add to the Rescue",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Enclosure"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      }
+    },
+    "/enclosures/{id}" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "returns a specific Enclosure for the Rescue",
+        "description" : "Returns details about a specific Enclosure\n",
+        "operationId" : "getEnclosureById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Enclosure"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "admins" ],
+        "summary" : "updates a Enclosure by id",
+        "description" : "Updates an existing Enclosure by id",
+        "operationId" : "updateEnclosureById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "unique id of Enclosure to update",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Enclosure"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "admins" ],
+        "summary" : "deletes a Enclosure by id",
+        "description" : "Deletes an existing Enclosure by id",
+        "operationId" : "deleteEnclosureById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "admins" ],
+        "summary" : "updates a Enclosure by id",
+        "description" : "Updates an existing Enclosure by id with only elements that are changing",
+        "operationId" : "patchEnclosureById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "unique id of Enclosure to patch",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "partial json object of Enclosure with fields to patch",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Enclosure"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          }
+        }
+      }
+    },
+    "/kennels" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "searches all Kennels for the Rescue",
+        "description" : "With no parameters, returns all Kennels for the Rescue\n",
+        "operationId" : "getKennels",
+        "parameters" : [ {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Kennel"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "adds a Kennel to the rescue",
+        "description" : "Adds a new Kennel to the Rescue",
+        "operationId" : "addKennel",
+        "requestBody" : {
+          "description" : "Kennel to add to the Rescue",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Kennel"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      }
+    },
+    "/kennels/{id}" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "returns a specific location for the Rescue",
+        "description" : "Returns details about a specific Kennel\n",
+        "operationId" : "getKennelById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Kennel"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "updates a Kennel by id",
+        "description" : "Updates an existing Kennel by id",
+        "operationId" : "updateKennelById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/KennelBody"
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "deletes a Kennel by id",
+        "description" : "Deletes an existing Kennel by id",
+        "operationId" : "deleteKennelById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "updates a Kennel by id",
+        "description" : "Updates an existing Kennel by id with only elements that are changing",
+        "operationId" : "patchKennelById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "unique id of Kennel to patch",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/KennelBody"
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          }
+        }
+      }
+    },
+    "/locations" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "searches all locations for the Rescue",
+        "description" : "With no parameters, returns all Locations for the Rescue\n",
+        "operationId" : "getLocations",
+        "parameters" : [ {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Location"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "admins" ],
+        "summary" : "adds a Location to the rescue",
+        "description" : "Adds a new Location to the Rescue",
+        "operationId" : "addLocation",
+        "requestBody" : {
+          "description" : "Location to add to the Rescue",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Location"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      }
+    },
+    "/locations/{id}" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "returns a specific location for the Rescue",
+        "description" : "Returns details about a specific Location\n",
+        "operationId" : "getLocationById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Location"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "updates a Location by id",
+        "description" : "Updates an existing Location by id",
+        "operationId" : "updateLocationById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "unique id of Location to update",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Location"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "admins" ],
+        "summary" : "deletes a Location by id",
+        "description" : "Deletes an existing Location by id",
+        "operationId" : "deleteLocationById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "updates a Location by id",
+        "description" : "Updates an existing Location by id with only elements that are changing",
+        "operationId" : "patchLocationById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "unique id of Location to patch",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "partial json object of Location with fields to patch",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Location"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          }
+        }
+      }
+    },
+    "/locations/{locationId}/buildings" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "returns all buildings at a Location",
+        "description" : "With no parameters, returns all Buildings at the specified Location\n",
+        "operationId" : "getBuildingsAtLocation",
+        "parameters" : [ {
+          "name" : "locationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Building"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "adds a Building at the specified Location",
+        "description" : "Adds a new Building to the specified Location",
+        "operationId" : "addBuildingToLocation",
+        "parameters" : [ {
+          "name" : "locationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/BuildingBody"
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      }
+    },
+    "/locations/{locationId}/buildings/{buildingId}" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "returns a specific location for the Rescue",
+        "description" : "Returns details about a specific Location\n",
+        "operationId" : "getBuildingAtLocationById",
+        "parameters" : [ {
+          "name" : "locationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "buildingId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Location"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "admins" ],
+        "summary" : "updates a Location by id",
+        "description" : "Updates an existing Location by id",
+        "operationId" : "updateBuildingAtLocationById",
+        "parameters" : [ {
+          "name" : "locationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "buildingId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "unique id of Location to update",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Building"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "deletes a Building from a Location by id",
+        "description" : "Deletes an existing Building at a Location by id",
+        "operationId" : "deleteBuildingAtLocationById",
+        "parameters" : [ {
+          "name" : "locationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "buildingId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "updates a Location by id",
+        "description" : "Updates an existing Location by id with only elements that are changing",
+        "operationId" : "patchBuildingAtLocationById",
+        "parameters" : [ {
+          "name" : "locationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "buildingId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "partial json object of Location with fields to patch",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Building"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          }
+        }
+      }
+    },
+    "/locations/{locationId}/buildings/{buildingId}/rooms" : {
+      "get" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "gets all Rooms in a Building at a Location",
+        "description" : "With no parameters, returns all Rooms in a Building",
+        "operationId" : "getRoomsInBuilding",
+        "parameters" : [ {
+          "name" : "locationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "buildingId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Room"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "creates a Room in the specified Building",
+        "description" : "Adds a new Room to the specified Location",
+        "operationId" : "addRoomToBuilding",
+        "parameters" : [ {
+          "name" : "locationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "buildingId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Room to create",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Room"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      }
+    },
+    "/locations/{locationId}/buildings/{buildingId}/rooms/{roomId}" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "returns a specific location for the Rescue",
+        "description" : "Returns details about a specific Room\n",
+        "operationId" : "getRoomInBuildingById",
+        "parameters" : [ {
+          "name" : "locationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "buildingId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "roomId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Room"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "updates a Room by id",
+        "description" : "Updates an existing Room by id",
+        "operationId" : "updateRoomInBuildingById",
+        "parameters" : [ {
+          "name" : "locationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "buildingId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "roomId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "unique id of Room to update",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Room"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "deletes a Room by id",
+        "description" : "Deletes an existing Building at a Room by id",
+        "operationId" : "deleteRoomFromBuildingById",
+        "parameters" : [ {
+          "name" : "locationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "buildingId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "roomId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "updates a Room by id",
+        "description" : "Updates an existing Room by id with only elements that are changing",
+        "operationId" : "patchRoomInBuildingById",
+        "parameters" : [ {
+          "name" : "locationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "buildingId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "roomId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "partial json object of Room with fields to patch",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Room"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          }
+        }
+      }
+    },
+    "/locations/{locationId}/buildings/{buildingId}/room/{roomId}/kennels" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "returns all kennels in a Room",
+        "description" : "With no parameters, returns all kennels in a Room",
+        "operationId" : "getKennelsInRoom",
+        "parameters" : [ {
+          "name" : "locationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "buildingId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "roomId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Kennel"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "creates a Kennel in the specified Room",
+        "description" : "Adds a new Kennel to the specified Room",
+        "operationId" : "addKennelToRoom",
+        "parameters" : [ {
+          "name" : "locationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "buildingId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "roomId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Room to create",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Kennel"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      }
+    },
+    "/locations/{locationId}/buildings/{buildingId}/rooms/{roomId}/kennels/{kennelId}" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "returns a specific location for the Rescue",
+        "description" : "Returns details about a specific Room\n",
+        "operationId" : "getKennelFromRoomById",
+        "parameters" : [ {
+          "name" : "locationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "buildingId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "roomId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "kennelId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Kennel"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "updates a Kennel by id",
+        "description" : "Updates an existing Kennel in a Room by id",
+        "operationId" : "updateKennelInRoomById",
+        "parameters" : [ {
+          "name" : "locationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "buildingId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "roomId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "kennelId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/KennelBody"
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "deletes a Kennel by id",
+        "description" : "Deletes an existing Kennel from a Room by id",
+        "operationId" : "deleteKennelFromRoomById",
+        "parameters" : [ {
+          "name" : "locationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "buildingId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "roomId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "kennelId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "updates a Kennel by id",
+        "description" : "Updates an existing Kennel by id with only elements that are changing",
+        "operationId" : "patchKennelInRoomById",
+        "parameters" : [ {
+          "name" : "locationId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "buildingId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "roomId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }, {
+          "name" : "kennelId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/KennelBody"
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          }
+        }
+      }
+    },
+    "/counties" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "retrieves counties for the provided state",
+        "description" : "Given a state, return an alpha list of counties in that state",
+        "operationId" : "getCountiesByState",
+        "parameters" : [ {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "state",
+          "in" : "query",
+          "description" : "state to retrieve counties for",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/adoptions" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "searches all Adoptions at the Rescue",
+        "description" : "With no parameters, returns all Adoptions at the Rescue\n",
+        "operationId" : "searchAdoptions",
+        "parameters" : [ {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "fromDate",
+          "in" : "query",
+          "description" : "Specifies the first date to return in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "toDate",
+          "in" : "query",
+          "description" : "Specifies the last date to include in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Adoption"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      }
+    },
+    "/intakes" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "support for animal intake process",
+        "description" : "Base endopoints returns and empty Intake array",
+        "operationId" : "intakeInformation",
+        "parameters" : [ {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "fromDate",
+          "in" : "query",
+          "description" : "Specifies the first date to return in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "toDate",
+          "in" : "query",
+          "description" : "Specifies the last date to include in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Intake"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/inventory" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "searches inventory",
+        "description" : "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
+        "operationId" : "searchInventory",
+        "parameters" : [ {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "searchString",
+          "in" : "query",
+          "description" : "pass an optional search string for looking up inventory",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/InventoryItem"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "admins", "staff", "vets" ],
+        "summary" : "adds an inventory item",
+        "description" : "Adds an item to the system",
+        "operationId" : "addInventory",
+        "requestBody" : {
+          "description" : "Inventory item to add",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/InventoryItem"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "item created"
+          },
+          "400" : {
+            "description" : "invalid input, object invalid"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          },
+          "409" : {
+            "description" : "an existing item already exists"
+          }
+        }
+      }
+    },
+    "/cats" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "searches cats",
+        "description" : "With no parameters, returns all cats currently in the shelter. Allows filters.\n",
+        "operationId" : "searchCats",
+        "parameters" : [ {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "fromDate",
+          "in" : "query",
+          "description" : "Specifies the first date to return in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "toDate",
+          "in" : "query",
+          "description" : "Specifies the last date to include in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "name",
+          "in" : "query",
+          "description" : "Specifies a matching pattern for the name",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "adoptionStatus",
+          "in" : "query",
+          "description" : "Specifies one of the valid AdoptionStatus values",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "breed",
+          "in" : "query",
+          "description" : "breed of cat to retrieve",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "color",
+          "in" : "query",
+          "description" : "Specifies one of the valid CatColors",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "gender",
+          "in" : "query",
+          "description" : "Specifies on of the valid Gender",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Cat"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "staff" ],
+        "summary" : "creates a new Cat",
+        "description" : "adds a Cat with a unique id",
+        "operationId" : "createCat",
+        "requestBody" : {
+          "description" : "full Cat object with new id",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Cat"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "201" : {
+            "description" : "create successful"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          },
+          "409" : {
+            "description" : "unable to apply valid change to a valid Cat"
+          }
+        }
+      }
+    },
+    "/cats/{id}" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "retrieves a Cat by id",
+        "description" : "Gets an existing Cat by id",
+        "operationId" : "getCatById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Cat"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "staff" ],
+        "summary" : "updates a Cat by id",
+        "description" : "Updates an existing Cat by id",
+        "operationId" : "updateCatById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "unique id of Cat to update",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Cat"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "deletes a Cat by id",
+        "description" : "Deletes an existing Cat by id",
+        "operationId" : "deleteCatById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "staff" ],
+        "summary" : "updates a Cat by id",
+        "description" : "Updates an existing Cat by id with only elements that are changing",
+        "operationId" : "patchCatById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "unique id of Cat to patch",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "partial json object of Cat with fields to patch",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Cat"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          }
+        }
+      }
+    },
+    "/dogs" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "searches dogs",
+        "description" : "With no parameters, returns all dogss currently in the shelter. Allows filters.\n",
+        "operationId" : "searchDog",
+        "parameters" : [ {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "fromDate",
+          "in" : "query",
+          "description" : "Specifies the first date to return in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "toDate",
+          "in" : "query",
+          "description" : "Specifies the last date to include in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "name",
+          "in" : "query",
+          "description" : "Specifies a matching pattern for the name",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "adoptionStatus",
+          "in" : "query",
+          "description" : "Specifies one of the valid AdoptionStatus values",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "breed",
+          "in" : "query",
+          "description" : "breed of dog to retrieve",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "color",
+          "in" : "query",
+          "description" : "Specifies one of the valid DogColors",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "gender",
+          "in" : "query",
+          "description" : "Specifies on of the valid Gender",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Dog"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "staff" ],
+        "summary" : "creates a new Dog",
+        "description" : "adds a Dog with a unique id",
+        "operationId" : "createDog",
+        "requestBody" : {
+          "description" : "full Dog object with new id",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Dog"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "201" : {
+            "description" : "create successful"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          },
+          "409" : {
+            "description" : "unable to apply valid change to a valid Dog"
+          }
+        }
+      }
+    },
+    "/dogs/{id}" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "retrieves a Dog by id",
+        "description" : "Gets an existing Dog by id",
+        "operationId" : "getDogById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Dog"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "staff" ],
+        "summary" : "updates a Dog by id",
+        "description" : "Updates an existing Dog by id",
+        "operationId" : "updateDogById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "unique id of Dog to update",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Dog"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "deletes a Dog by id",
+        "description" : "Deletes an existing Dog by id",
+        "operationId" : "deleteDogById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "staff" ],
+        "summary" : "updates a Dog by id",
+        "description" : "Updates an existing Dog by id with only elements that are changing",
+        "operationId" : "patchDogById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "unique id of Dog to patch",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "partial json object of Dog with fields to patch",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Dog"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          }
+        }
+      }
+    },
+    "/contacts" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "searches Contact",
+        "description" : "With no parameters, returns all contacts associated with the Rescue. Allows filters.\n",
+        "operationId" : "searchContact",
+        "parameters" : [ {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "fromDate",
+          "in" : "query",
+          "description" : "Specifies the first date to return in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "toDate",
+          "in" : "query",
+          "description" : "Specifies the last date to include in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "searchString",
+          "in" : "query",
+          "description" : "pass an optional search string for looking up Fosters",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "gender",
+          "in" : "query",
+          "description" : "One of the valid Gender enumeration values",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/Gender"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Contact"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "creates a new Contact",
+        "description" : "adds a Contact with a unique id",
+        "operationId" : "createContact",
+        "requestBody" : {
+          "description" : "full Contact object with new id",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Contact"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "201" : {
+            "description" : "create successful"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          },
+          "409" : {
+            "description" : "unable to apply valid change to a valid Contact"
+          }
+        }
+      }
+    },
+    "/contacts/{id}" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "retrieves a Contact by id",
+        "description" : "Gets an existing Contact by id",
+        "operationId" : "getContactById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Contact"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "public" ],
+        "summary" : "updates a Contact by id",
+        "description" : "Updates an existing Contact by id",
+        "operationId" : "updateContactById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "unique id of Contact to update",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Contact"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "deletes a Contact by id",
+        "description" : "Deletes an existing Contact by id",
+        "operationId" : "deleteContactById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "updates a Contact by id",
+        "description" : "Updates an existing Contact by id with only elements that are changing",
+        "operationId" : "patchContactById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "unique id of Contact to patch",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "partial json object of Contact with fields to patch",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Contact"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      }
+    },
+    "/donors" : {
+      "get" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "searches animal rescue doners",
+        "description" : "With no parameters, returns all Donors. Allows filters.\n",
+        "operationId" : "getDonors",
+        "parameters" : [ {
+          "name" : "searchString",
+          "in" : "query",
+          "description" : "pass an optional search string for looking up Fosters",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "fromDate",
+          "in" : "query",
+          "description" : "Specifies the first date to return in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "toDate",
+          "in" : "query",
+          "description" : "Specifies the last date to include in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "state",
+          "in" : "query",
+          "description" : "state to retrieve counties for",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching specified criteria",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Donor"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "staff" ],
+        "summary" : "creates new Donor with a unique id",
+        "description" : "creates a new, unique Donor",
+        "operationId" : "createDonor",
+        "requestBody" : {
+          "description" : "new Donor object",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Donor"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "400" : {
+            "description" : "invalid content on Donor info"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      }
+    },
+    "/donors/{id}" : {
+      "get" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "retrieves a Donor by id",
+        "description" : "Gets an existing Donor by id",
+        "operationId" : "getDonorById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Donor"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "updates a Donor by id",
+        "description" : "Updates an existing Donor by id",
+        "operationId" : "updateDonorById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "unique id of Donor to update",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Donor"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "deletes a Donor by id",
+        "description" : "Deletes an existing Donor by id",
+        "operationId" : "deleteDonorById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "updates a Donor by id",
+        "description" : "Updates an existing Donor by id with only elements that are changing",
+        "operationId" : "patchDonorById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "unique id of Donor to patch",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "partial json object of Donor with fields to patch",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Donor"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          }
+        }
+      }
+    },
+    "/fosters" : {
+      "get" : {
+        "tags" : [ "admins", "staff", "vets" ],
+        "summary" : "searches animal fosters",
+        "description" : "With no parameters, returns all registered Fosters. Allows filters.\n",
+        "operationId" : "searchFosters",
+        "parameters" : [ {
+          "name" : "searchString",
+          "in" : "query",
+          "description" : "pass an optional search string for looking up Fosters",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "fromDate",
+          "in" : "query",
+          "description" : "Specifies the first date to return in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "toDate",
+          "in" : "query",
+          "description" : "Specifies the last date to include in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching specified criteria",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Foster"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "creates new Foster with a unique id",
+        "description" : "creates a new, unique Foster",
+        "operationId" : "createFoster",
+        "requestBody" : {
+          "description" : "new Foster object",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Foster"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "400" : {
+            "description" : "invalid content on Foster info"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      }
+    },
+    "/fosters/{id}" : {
+      "get" : {
+        "tags" : [ "admins", "staff", "vets" ],
+        "summary" : "retrieves a Foster by id",
+        "description" : "Gets an existing Foster by id",
+        "operationId" : "getFosterById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Foster"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "updates a Foster by id",
+        "description" : "Updates an existing Foster by id",
+        "operationId" : "updateFosterById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "unique id of Foster to update",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Foster"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "deletes a Foster by id",
+        "description" : "Deletes an existing Foster by id",
+        "operationId" : "deleteFosterById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "updates a Foster by id",
+        "description" : "Updates an existing Foster by id with only elements that are changing",
+        "operationId" : "patchFosterById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "unique id of Foster to patch",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "partial json object of Foster with fields to patch",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Foster"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          }
+        }
+      }
+    },
+    "/organizations" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "searches Organization",
+        "description" : "With no parameters, returns all Organizations associated with the Rescue. Allows filters.\n",
+        "operationId" : "searchOrganization",
+        "parameters" : [ {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "fromDate",
+          "in" : "query",
+          "description" : "Specifies the first date to return in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "toDate",
+          "in" : "query",
+          "description" : "Specifies the last date to include in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "name",
+          "in" : "query",
+          "description" : "Specifies a matching pattern for the name",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "gender",
+          "in" : "query",
+          "description" : "Specifies on of the valid Gender",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Organization"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "204" : {
+            "description" : "no results found"
+          },
+          "400" : {
+            "description" : "bad request - check parameter format"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "admins", "staff", "vets" ],
+        "summary" : "creates a new Organization",
+        "description" : "adds a Organization with a unique id",
+        "operationId" : "createOrganization",
+        "requestBody" : {
+          "description" : "full Organization object with new id",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Organization"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "201" : {
+            "description" : "create successful"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "409" : {
+            "description" : "unable to apply valid change to a valid Organization"
+          }
+        }
+      }
+    },
+    "/organizations/{id}" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "retrieves a Organization by id",
+        "description" : "Gets an existing Organization by id",
+        "operationId" : "getOrganizationById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Organization"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "admins", "staff", "vets" ],
+        "summary" : "updates a Organization by id",
+        "description" : "Updates an existing Organization by id",
+        "operationId" : "updateOrganizationById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "unique id of Organization to update",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Organization"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "admins", "staff", "vets" ],
+        "summary" : "deletes a Organization by id",
+        "description" : "Deletes an existing Organization by id",
+        "operationId" : "deleteOrganizationById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "admins", "staff", "vets" ],
+        "summary" : "updates a Organization by id",
+        "description" : "Updates an existing Organization by id with only elements that are changing",
+        "operationId" : "patchOrganizationById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "unique id of Organization to patch",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "partial json object of Organization with fields to patch",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Organization"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          }
+        }
+      }
+    },
+    "/volunteers" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "searches volunteers",
+        "description" : "With no parameters, returns all registered Volunteers. Allows filters.\n",
+        "operationId" : "searchVolunteers",
+        "parameters" : [ {
+          "name" : "searchString",
+          "in" : "query",
+          "description" : "pass an optional search string for looking up Fosters",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits the number of items on a page",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "Specifies the page number of the artists to be displayed",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "fromDate",
+          "in" : "query",
+          "description" : "Specifies the first date to return in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "toDate",
+          "in" : "query",
+          "description" : "Specifies the last date to include in a query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching specified criteria",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Volunteer"
+                  },
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "creates new Volunteer with a unique id",
+        "description" : "creates a new, unique Volunteer",
+        "operationId" : "createVolunteer",
+        "requestBody" : {
+          "description" : "new Volunteer object",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Volunteer"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "400" : {
+            "description" : "invalid content on Volunteer info"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      }
+    },
+    "/volunteers/{id}" : {
+      "get" : {
+        "tags" : [ "admins", "public", "staff", "vets" ],
+        "summary" : "retrieves a Volunteer by id",
+        "description" : "Gets an existing Volunteer by id",
+        "operationId" : "getVolunteerById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Volunteer"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "updates a Volunteer by id",
+        "description" : "Updates an existing Volunteer by id",
+        "operationId" : "updateVolunteerById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "unique id of Volunteer to update",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Volunteer"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "deletes a Volunteer by id",
+        "description" : "Deletes an existing Volunteer by id",
+        "operationId" : "deleteVolunteerById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request"
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "admins", "staff" ],
+        "summary" : "updates a Volunteer by id",
+        "description" : "Updates an existing Volunteer by id with only elements that are changing",
+        "operationId" : "patchVolunteerById",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "unique id of Volunteer to patch",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "partial json object of Volunteer with fields to patch",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Volunteer"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "ok"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "PatchSet" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/PatchDocument"
+        }
+      },
+      "PatchDocument" : {
+        "required" : [ "op", "path" ],
+        "type" : "object",
+        "properties" : {
+          "op" : {
+            "type" : "string",
+            "description" : "The operation to be performed",
+            "enum" : [ "add", "remove", "replace", "move", "copy", "test" ]
+          },
+          "path" : {
+            "type" : "string",
+            "description" : "A JSON-Pointer"
+          },
+          "value" : {
+            "type" : "object",
+            "description" : "The value to be used within the operations."
+          },
+          "from" : {
+            "type" : "string",
+            "description" : "A string containing a JSON Pointer value."
+          }
+        },
+        "description" : "A JSONPatch document as defined by RFC 6902"
+      },
+      "Address" : {
+        "required" : [ "city", "id", "stateOrProvence" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "addressLine1" : {
+            "type" : "string"
+          },
+          "addressLine2" : {
+            "type" : "string"
+          },
+          "city" : {
+            "type" : "string"
+          },
+          "stateOrProvence" : {
+            "type" : "string"
+          },
+          "county" : {
+            "$ref" : "#/components/schemas/CountyMI"
+          },
+          "country" : {
+            "type" : "string"
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        },
+        "example" : {
+          "country" : "country",
+          "notes" : [ {
+            "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+            "content" : "content"
+          }, {
+            "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+            "content" : "content"
+          } ],
+          "city" : "city",
+          "stateOrProvence" : "stateOrProvence",
+          "county" : "Alcona",
+          "addressLine1" : "addressLine1",
+          "addressLine2" : "addressLine2"
+        }
+      },
+      "Adoption" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "date" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "adoptees" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/BaseAnimalInfo"
+            }
+          },
+          "adoptor" : {
+            "$ref" : "#/components/schemas/Contact"
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        },
+        "example" : {
+          "date" : "2000-01-23",
+          "adoptor" : {
+            "emails" : [ {
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "emailType" : "Primary",
+              "email" : ""
+            }, {
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "emailType" : "Primary",
+              "email" : ""
+            } ],
+            "driversLicense" : "driversLicense",
+            "firstName" : "John",
+            "lastName" : "Doe",
+            "addresses" : [ {
+              "country" : "country",
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "city" : "city",
+              "stateOrProvence" : "stateOrProvence",
+              "county" : "Alcona",
+              "addressLine1" : "addressLine1",
+              "addressLine2" : "addressLine2"
+            }, {
+              "country" : "country",
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "city" : "city",
+              "stateOrProvence" : "stateOrProvence",
+              "county" : "Alcona",
+              "addressLine1" : "addressLine1",
+              "addressLine2" : "addressLine2"
+            } ],
+            "notes" : [ null, null ],
+            "phones" : [ {
+              "number" : 0,
+              "numberType" : "Primary",
+              "location" : "Home"
+            }, {
+              "number" : 0,
+              "numberType" : "Primary",
+              "location" : "Home"
+            } ],
+            "middleName" : "Albert",
+            "dateOfBirth" : "2000-01-23"
+          },
+          "notes" : [ null, null ],
+          "adoptees" : [ {
+            "ageIsEstimated" : true,
+            "notes" : [ null, null ],
+            "gender" : "Male",
+            "name" : "name",
+            "dateOfBirth" : "2000-01-23",
+            "biography" : "biography",
+            "age" : "8W, 6M, 2Y",
+            "status" : "Adoption Pending"
+          }, {
+            "ageIsEstimated" : true,
+            "notes" : [ null, null ],
+            "gender" : "Male",
+            "name" : "name",
+            "dateOfBirth" : "2000-01-23",
+            "biography" : "biography",
+            "age" : "8W, 6M, 2Y",
+            "status" : "Adoption Pending"
+          } ],
+          "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+        }
+      },
+      "AvailabilityBlock" : {
+        "required" : [ "intervals" ],
+        "type" : "object",
+        "properties" : {
+          "dayOfWeek" : {
+            "$ref" : "#/components/schemas/DayOfWeekSelect"
+          },
+          "intervals" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/TimeInterval"
+            }
+          }
+        },
+        "example" : {
+          "intervals" : [ {
+            "fromTime" : "00:00"
+          }, {
+            "fromTime" : "00:00"
+          } ],
+          "dayOfWeek" : "Monday"
+        }
+      },
+      "AvailabilitySchedule" : {
+        "required" : [ "begin" ],
+        "type" : "object",
+        "properties" : {
+          "dateRange" : {
+            "$ref" : "#/components/schemas/AvailabilitySchedule_dateRange"
+          },
+          "schedule" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/AvailabilityBlock"
+            }
+          }
+        },
+        "example" : {
+          "schedule" : [ {
+            "intervals" : [ {
+              "fromTime" : "00:00"
+            }, {
+              "fromTime" : "00:00"
+            } ],
+            "dayOfWeek" : "Monday"
+          }, {
+            "intervals" : [ {
+              "fromTime" : "00:00"
+            }, {
+              "fromTime" : "00:00"
+            } ],
+            "dayOfWeek" : "Monday"
+          } ],
+          "dateRange" : {
+            "begin" : {
+              "month" : "January",
+              "dayOfMonth" : 0
+            }
+          }
+        }
+      },
+      "BaseAnimalInfo" : {
+        "required" : [ "ageIsEstimated", "gender", "id", "status" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "ageIsEstimated" : {
+            "type" : "boolean"
+          },
+          "age" : {
+            "type" : "string",
+            "example" : "8W, 6M, 2Y"
+          },
+          "dateOfBirth" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "status" : {
+            "$ref" : "#/components/schemas/AdoptionStatus"
+          },
+          "gender" : {
+            "$ref" : "#/components/schemas/Gender"
+          },
+          "species" : {
+            "$ref" : "#/components/schemas/Species"
+          },
+          "biography" : {
+            "type" : "string"
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        },
+        "example" : {
+          "ageIsEstimated" : true,
+          "notes" : [ null, null ],
+          "gender" : "Male",
+          "name" : "name",
+          "dateOfBirth" : "2000-01-23",
+          "biography" : "biography",
+          "age" : "8W, 6M, 2Y",
+          "status" : "Adoption Pending"
+        }
+      },
+      "Building" : {
+        "required" : [ "id" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "location" : {
+            "$ref" : "#/components/schemas/Location"
+          },
+          "rooms" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Room"
+            }
+          },
+          "kennels" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Kennel"
+            }
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        },
+        "example" : {
+          "rooms" : [ {
+            "notes" : [ null, null ],
+            "kennels" : [ null, null ],
+            "name" : "name",
+            "buildingId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+          }, {
+            "notes" : [ null, null ],
+            "kennels" : [ null, null ],
+            "name" : "name",
+            "buildingId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+          } ],
+          "notes" : [ null, null ],
+          "kennels" : [ null, null ],
+          "name" : "name",
+          "location" : {
+            "address" : {
+              "country" : "country",
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "city" : "city",
+              "stateOrProvence" : "stateOrProvence",
+              "county" : "Alcona",
+              "addressLine1" : "addressLine1",
+              "addressLine2" : "addressLine2"
+            },
+            "notes" : [ null, null ],
+            "buildings" : [ null, null ],
+            "kennels" : [ {
+              "lengthInInches" : 5,
+              "heightInInches" : 2,
+              "widthInInches" : 5,
+              "notes" : [ null, null ],
+              "species" : "Dog",
+              "name" : "name",
+              "maxOccupancy" : 1,
+              "animals" : [ {
+                "ageIsEstimated" : true,
+                "notes" : [ null, null ],
+                "gender" : "Male",
+                "name" : "name",
+                "dateOfBirth" : "2000-01-23",
+                "biography" : "biography",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              }, {
+                "ageIsEstimated" : true,
+                "notes" : [ null, null ],
+                "gender" : "Male",
+                "name" : "name",
+                "dateOfBirth" : "2000-01-23",
+                "biography" : "biography",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              } ],
+              "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            }, {
+              "lengthInInches" : 5,
+              "heightInInches" : 2,
+              "widthInInches" : 5,
+              "notes" : [ null, null ],
+              "species" : "Dog",
+              "name" : "name",
+              "maxOccupancy" : 1,
+              "animals" : [ {
+                "ageIsEstimated" : true,
+                "notes" : [ null, null ],
+                "gender" : "Male",
+                "name" : "name",
+                "dateOfBirth" : "2000-01-23",
+                "biography" : "biography",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              }, {
+                "ageIsEstimated" : true,
+                "notes" : [ null, null ],
+                "gender" : "Male",
+                "name" : "name",
+                "dateOfBirth" : "2000-01-23",
+                "biography" : "biography",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              } ],
+              "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            } ],
+            "name" : "name",
+            "enclosures" : [ {
+              "unitOfHeightMeasure" : "inches",
+              "notes" : [ null, null ],
+              "size" : 0.8008281904610115,
+              "unitOfAreaMeasure" : "sq. feet",
+              "heightInFeet" : 6.027456183070403,
+              "name" : "name"
+            }, {
+              "unitOfHeightMeasure" : "inches",
+              "notes" : [ null, null ],
+              "size" : 0.8008281904610115,
+              "unitOfAreaMeasure" : "sq. feet",
+              "heightInFeet" : 6.027456183070403,
+              "name" : "name"
+            } ]
+          },
+          "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+        }
+      },
+      "Cat" : {
+        "required" : [ "baseInfo", "breed", "color" ],
+        "type" : "object",
+        "properties" : {
+          "baseInfo" : {
+            "$ref" : "#/components/schemas/BaseAnimalInfo"
+          },
+          "breed" : {
+            "$ref" : "#/components/schemas/CatBreeds"
+          },
+          "color" : {
+            "$ref" : "#/components/schemas/CatColors"
+          }
+        },
+        "example" : {
+          "baseInfo" : {
+            "ageIsEstimated" : true,
+            "notes" : [ null, null ],
+            "gender" : "Male",
+            "name" : "name",
+            "dateOfBirth" : "2000-01-23",
+            "biography" : "biography",
+            "age" : "8W, 6M, 2Y",
+            "status" : "Adoption Pending"
+          },
+          "color" : "White",
+          "breed" : "Undetermined"
+        }
+      },
+      "Contact" : {
+        "required" : [ "id", "last_name" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "firstName" : {
+            "type" : "string",
+            "example" : "John"
+          },
+          "middleName" : {
+            "type" : "string",
+            "example" : "Albert"
+          },
+          "lastName" : {
+            "type" : "string",
+            "example" : "Doe"
+          },
+          "addresses" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Address"
+            }
+          },
+          "phones" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/PhoneNumber"
+            }
+          },
+          "emails" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/EmailAddress"
+            }
+          },
+          "dateOfBirth" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "driversLicense" : {
+            "type" : "string"
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        },
+        "example" : {
+          "emails" : [ {
+            "notes" : [ {
+              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+              "content" : "content"
+            }, {
+              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+              "content" : "content"
+            } ],
+            "emailType" : "Primary",
+            "email" : ""
+          }, {
+            "notes" : [ {
+              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+              "content" : "content"
+            }, {
+              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+              "content" : "content"
+            } ],
+            "emailType" : "Primary",
+            "email" : ""
+          } ],
+          "driversLicense" : "driversLicense",
+          "firstName" : "John",
+          "lastName" : "Doe",
+          "addresses" : [ {
+            "country" : "country",
+            "notes" : [ {
+              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+              "content" : "content"
+            }, {
+              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+              "content" : "content"
+            } ],
+            "city" : "city",
+            "stateOrProvence" : "stateOrProvence",
+            "county" : "Alcona",
+            "addressLine1" : "addressLine1",
+            "addressLine2" : "addressLine2"
+          }, {
+            "country" : "country",
+            "notes" : [ {
+              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+              "content" : "content"
+            }, {
+              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+              "content" : "content"
+            } ],
+            "city" : "city",
+            "stateOrProvence" : "stateOrProvence",
+            "county" : "Alcona",
+            "addressLine1" : "addressLine1",
+            "addressLine2" : "addressLine2"
+          } ],
+          "notes" : [ null, null ],
+          "phones" : [ {
+            "number" : 0,
+            "numberType" : "Primary",
+            "location" : "Home"
+          }, {
+            "number" : 0,
+            "numberType" : "Primary",
+            "location" : "Home"
+          } ],
+          "middleName" : "Albert",
+          "dateOfBirth" : "2000-01-23"
+        }
+      },
+      "DateRange" : {
+        "type" : "object",
+        "properties" : {
+          "startYear" : {
+            "$ref" : "#/components/schemas/YearSelect"
+          },
+          "startMonth" : {
+            "$ref" : "#/components/schemas/MonthSelect"
+          },
+          "startDayOfMonth" : {
+            "$ref" : "#/components/schemas/DayOfMonthSelect"
+          },
+          "endYear" : {
+            "$ref" : "#/components/schemas/YearSelect"
+          },
+          "endMonth" : {
+            "$ref" : "#/components/schemas/MonthSelect"
+          },
+          "endDayOfMonth" : {
+            "$ref" : "#/components/schemas/DayOfMonthSelect"
+          }
+        }
+      },
+      "Dog" : {
+        "required" : [ "baseInfo", "breed", "color" ],
+        "type" : "object",
+        "properties" : {
+          "baseInfo" : {
+            "$ref" : "#/components/schemas/BaseAnimalInfo"
+          },
+          "breed" : {
+            "$ref" : "#/components/schemas/DogBreeds"
+          },
+          "color" : {
+            "$ref" : "#/components/schemas/DogColors"
+          }
+        },
+        "example" : {
+          "baseInfo" : {
+            "ageIsEstimated" : true,
+            "notes" : [ null, null ],
+            "gender" : "Male",
+            "name" : "name",
+            "dateOfBirth" : "2000-01-23",
+            "biography" : "biography",
+            "age" : "8W, 6M, 2Y",
+            "status" : "Adoption Pending"
+          },
+          "color" : "Black",
+          "breed" : "Undetermined"
+        }
+      },
+      "Donation" : {
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "enum" : [ "Money", "Materials", "Time" ]
+          },
+          "date" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        },
+        "example" : {
+          "date" : "2000-01-23",
+          "notes" : [ {
+            "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+            "content" : "content"
+          }, {
+            "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+            "content" : "content"
+          } ],
+          "type" : "Money"
+        }
+      },
+      "Donor" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "startDate" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "endDate" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "contactId" : {
+            "$ref" : "#/components/schemas/Contact"
+          },
+          "donations" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Donation"
+            }
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        },
+        "example" : {
+          "notes" : [ null, null ],
+          "donations" : [ {
+            "date" : "2000-01-23",
+            "notes" : [ {
+              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+              "content" : "content"
+            }, {
+              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+              "content" : "content"
+            } ],
+            "type" : "Money"
+          }, {
+            "date" : "2000-01-23",
+            "notes" : [ {
+              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+              "content" : "content"
+            }, {
+              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+              "content" : "content"
+            } ],
+            "type" : "Money"
+          } ],
+          "endDate" : "2000-01-23",
+          "contactId" : {
+            "emails" : [ {
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "emailType" : "Primary",
+              "email" : ""
+            }, {
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "emailType" : "Primary",
+              "email" : ""
+            } ],
+            "driversLicense" : "driversLicense",
+            "firstName" : "John",
+            "lastName" : "Doe",
+            "addresses" : [ {
+              "country" : "country",
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "city" : "city",
+              "stateOrProvence" : "stateOrProvence",
+              "county" : "Alcona",
+              "addressLine1" : "addressLine1",
+              "addressLine2" : "addressLine2"
+            }, {
+              "country" : "country",
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "city" : "city",
+              "stateOrProvence" : "stateOrProvence",
+              "county" : "Alcona",
+              "addressLine1" : "addressLine1",
+              "addressLine2" : "addressLine2"
+            } ],
+            "notes" : [ null, null ],
+            "phones" : [ {
+              "number" : 0,
+              "numberType" : "Primary",
+              "location" : "Home"
+            }, {
+              "number" : 0,
+              "numberType" : "Primary",
+              "location" : "Home"
+            } ],
+            "middleName" : "Albert",
+            "dateOfBirth" : "2000-01-23"
+          },
+          "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+          "startDate" : "2000-01-23"
+        }
+      },
+      "EmailAddress" : {
+        "required" : [ "email", "emailType" ],
+        "type" : "object",
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "format" : "email"
+          },
+          "emailType" : {
+            "type" : "string",
+            "enum" : [ "Primary", "Secondary" ]
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        },
+        "example" : {
+          "notes" : [ {
+            "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+            "content" : "content"
+          }, {
+            "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+            "content" : "content"
+          } ],
+          "emailType" : "Primary",
+          "email" : ""
+        }
+      },
+      "Enclosure" : {
+        "required" : [ "id" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "size" : {
+            "type" : "number"
+          },
+          "unitOfAreaMeasure" : {
+            "type" : "string",
+            "enum" : [ "sq. feet", "acres" ]
+          },
+          "heightInFeet" : {
+            "type" : "number"
+          },
+          "unitOfHeightMeasure" : {
+            "type" : "string",
+            "enum" : [ "inches", "feet" ]
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        },
+        "example" : {
+          "unitOfHeightMeasure" : "inches",
+          "notes" : [ null, null ],
+          "size" : 0.8008281904610115,
+          "unitOfAreaMeasure" : "sq. feet",
+          "heightInFeet" : 6.027456183070403,
+          "name" : "name"
+        }
+      },
+      "Foster" : {
+        "required" : [ "contactId", "id", "locationId" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "startDate" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "endDate" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "contactId" : {
+            "$ref" : "#/components/schemas/Contact"
+          },
+          "locationId" : {
+            "$ref" : "#/components/schemas/Location"
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        },
+        "example" : {
+          "notes" : [ {
+            "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+            "content" : "content"
+          }, {
+            "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+            "content" : "content"
+          } ],
+          "endDate" : "2000-01-23",
+          "contactId" : {
+            "emails" : [ {
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "emailType" : "Primary",
+              "email" : ""
+            }, {
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "emailType" : "Primary",
+              "email" : ""
+            } ],
+            "driversLicense" : "driversLicense",
+            "firstName" : "John",
+            "lastName" : "Doe",
+            "addresses" : [ {
+              "country" : "country",
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "city" : "city",
+              "stateOrProvence" : "stateOrProvence",
+              "county" : "Alcona",
+              "addressLine1" : "addressLine1",
+              "addressLine2" : "addressLine2"
+            }, {
+              "country" : "country",
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "city" : "city",
+              "stateOrProvence" : "stateOrProvence",
+              "county" : "Alcona",
+              "addressLine1" : "addressLine1",
+              "addressLine2" : "addressLine2"
+            } ],
+            "notes" : [ null, null ],
+            "phones" : [ {
+              "number" : 0,
+              "numberType" : "Primary",
+              "location" : "Home"
+            }, {
+              "number" : 0,
+              "numberType" : "Primary",
+              "location" : "Home"
+            } ],
+            "middleName" : "Albert",
+            "dateOfBirth" : "2000-01-23"
+          },
+          "locationId" : {
+            "address" : {
+              "country" : "country",
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "city" : "city",
+              "stateOrProvence" : "stateOrProvence",
+              "county" : "Alcona",
+              "addressLine1" : "addressLine1",
+              "addressLine2" : "addressLine2"
+            },
+            "notes" : [ null, null ],
+            "buildings" : [ null, null ],
+            "kennels" : [ {
+              "lengthInInches" : 5,
+              "heightInInches" : 2,
+              "widthInInches" : 5,
+              "notes" : [ null, null ],
+              "species" : "Dog",
+              "name" : "name",
+              "maxOccupancy" : 1,
+              "animals" : [ {
+                "ageIsEstimated" : true,
+                "notes" : [ null, null ],
+                "gender" : "Male",
+                "name" : "name",
+                "dateOfBirth" : "2000-01-23",
+                "biography" : "biography",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              }, {
+                "ageIsEstimated" : true,
+                "notes" : [ null, null ],
+                "gender" : "Male",
+                "name" : "name",
+                "dateOfBirth" : "2000-01-23",
+                "biography" : "biography",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              } ],
+              "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            }, {
+              "lengthInInches" : 5,
+              "heightInInches" : 2,
+              "widthInInches" : 5,
+              "notes" : [ null, null ],
+              "species" : "Dog",
+              "name" : "name",
+              "maxOccupancy" : 1,
+              "animals" : [ {
+                "ageIsEstimated" : true,
+                "notes" : [ null, null ],
+                "gender" : "Male",
+                "name" : "name",
+                "dateOfBirth" : "2000-01-23",
+                "biography" : "biography",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              }, {
+                "ageIsEstimated" : true,
+                "notes" : [ null, null ],
+                "gender" : "Male",
+                "name" : "name",
+                "dateOfBirth" : "2000-01-23",
+                "biography" : "biography",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              } ],
+              "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            } ],
+            "name" : "name",
+            "enclosures" : [ {
+              "unitOfHeightMeasure" : "inches",
+              "notes" : [ null, null ],
+              "size" : 0.8008281904610115,
+              "unitOfAreaMeasure" : "sq. feet",
+              "heightInFeet" : 6.027456183070403,
+              "name" : "name"
+            }, {
+              "unitOfHeightMeasure" : "inches",
+              "notes" : [ null, null ],
+              "size" : 0.8008281904610115,
+              "unitOfAreaMeasure" : "sq. feet",
+              "heightInFeet" : 6.027456183070403,
+              "name" : "name"
+            } ]
+          },
+          "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+          "startDate" : "2000-01-23"
+        }
+      },
+      "Id" : {
+        "type" : "string",
+        "format" : "uuid",
+        "example" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+      },
+      "Intake" : {
+        "required" : [ "id", "parNumber", "staffId", "surrenderingParty", "timestamp" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "timestamp" : {
+            "type" : "string",
+            "format" : "dateTime"
+          },
+          "staffId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "example" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+          },
+          "parNumber" : {
+            "type" : "integer"
+          },
+          "surrenderingPartyId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "example" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        },
+        "example" : {
+          "notes" : [ {
+            "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+            "content" : "content"
+          }, {
+            "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+            "content" : "content"
+          } ],
+          "surrenderingPartyId" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+          "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+          "parNumber" : 0,
+          "staffId" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+          "timestamp" : "timestamp"
+        }
+      },
+      "InventoryItem" : {
+        "required" : [ "id", "manufacturer", "name", "releaseDate" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "name" : {
+            "type" : "string",
+            "example" : "Widget Adapter"
+          },
+          "releaseDate" : {
+            "type" : "string",
+            "format" : "int32",
+            "example" : "2016-08-29T09:12:33.001Z"
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        },
+        "example" : {
+          "notes" : [ {
+            "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+            "content" : "content"
+          }, {
+            "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+            "content" : "content"
+          } ],
+          "releaseDate" : "2016-08-29T09:12:33.001Z",
+          "name" : "Widget Adapter",
+          "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+        }
+      },
+      "Kennel" : {
+        "required" : [ "id", "maxOccupancy", "roomId" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "roomId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "example" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+          },
+          "species" : {
+            "$ref" : "#/components/schemas/Species"
+          },
+          "maxOccupancy" : {
+            "type" : "integer"
+          },
+          "lengthInInches" : {
+            "type" : "integer"
+          },
+          "widthInInches" : {
+            "type" : "integer"
+          },
+          "heightInInches" : {
+            "type" : "integer"
+          },
+          "animals" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/BaseAnimalInfo"
+            }
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        },
+        "example" : {
+          "lengthInInches" : 5,
+          "heightInInches" : 2,
+          "widthInInches" : 5,
+          "notes" : [ null, null ],
+          "species" : "Dog",
+          "name" : "name",
+          "maxOccupancy" : 1,
+          "animals" : [ {
+            "ageIsEstimated" : true,
+            "notes" : [ null, null ],
+            "gender" : "Male",
+            "name" : "name",
+            "dateOfBirth" : "2000-01-23",
+            "biography" : "biography",
+            "age" : "8W, 6M, 2Y",
+            "status" : "Adoption Pending"
+          }, {
+            "ageIsEstimated" : true,
+            "notes" : [ null, null ],
+            "gender" : "Male",
+            "name" : "name",
+            "dateOfBirth" : "2000-01-23",
+            "biography" : "biography",
+            "age" : "8W, 6M, 2Y",
+            "status" : "Adoption Pending"
+          } ],
+          "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+        }
+      },
+      "Location" : {
+        "required" : [ "address", "id" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "address" : {
+            "$ref" : "#/components/schemas/Address"
+          },
+          "buildings" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Building"
+            }
+          },
+          "enclosures" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Enclosure"
+            }
+          },
+          "kennels" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Kennel"
+            }
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        },
+        "example" : {
+          "address" : {
+            "country" : "country",
+            "notes" : [ {
+              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+              "content" : "content"
+            }, {
+              "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+              "content" : "content"
+            } ],
+            "city" : "city",
+            "stateOrProvence" : "stateOrProvence",
+            "county" : "Alcona",
+            "addressLine1" : "addressLine1",
+            "addressLine2" : "addressLine2"
+          },
+          "notes" : [ null, null ],
+          "buildings" : [ null, null ],
+          "kennels" : [ {
+            "lengthInInches" : 5,
+            "heightInInches" : 2,
+            "widthInInches" : 5,
+            "notes" : [ null, null ],
+            "species" : "Dog",
+            "name" : "name",
+            "maxOccupancy" : 1,
+            "animals" : [ {
+              "ageIsEstimated" : true,
+              "notes" : [ null, null ],
+              "gender" : "Male",
+              "name" : "name",
+              "dateOfBirth" : "2000-01-23",
+              "biography" : "biography",
+              "age" : "8W, 6M, 2Y",
+              "status" : "Adoption Pending"
+            }, {
+              "ageIsEstimated" : true,
+              "notes" : [ null, null ],
+              "gender" : "Male",
+              "name" : "name",
+              "dateOfBirth" : "2000-01-23",
+              "biography" : "biography",
+              "age" : "8W, 6M, 2Y",
+              "status" : "Adoption Pending"
+            } ],
+            "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+          }, {
+            "lengthInInches" : 5,
+            "heightInInches" : 2,
+            "widthInInches" : 5,
+            "notes" : [ null, null ],
+            "species" : "Dog",
+            "name" : "name",
+            "maxOccupancy" : 1,
+            "animals" : [ {
+              "ageIsEstimated" : true,
+              "notes" : [ null, null ],
+              "gender" : "Male",
+              "name" : "name",
+              "dateOfBirth" : "2000-01-23",
+              "biography" : "biography",
+              "age" : "8W, 6M, 2Y",
+              "status" : "Adoption Pending"
+            }, {
+              "ageIsEstimated" : true,
+              "notes" : [ null, null ],
+              "gender" : "Male",
+              "name" : "name",
+              "dateOfBirth" : "2000-01-23",
+              "biography" : "biography",
+              "age" : "8W, 6M, 2Y",
+              "status" : "Adoption Pending"
+            } ],
+            "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+          } ],
+          "name" : "name",
+          "enclosures" : [ {
+            "unitOfHeightMeasure" : "inches",
+            "notes" : [ null, null ],
+            "size" : 0.8008281904610115,
+            "unitOfAreaMeasure" : "sq. feet",
+            "heightInFeet" : 6.027456183070403,
+            "name" : "name"
+          }, {
+            "unitOfHeightMeasure" : "inches",
+            "notes" : [ null, null ],
+            "size" : 0.8008281904610115,
+            "unitOfAreaMeasure" : "sq. feet",
+            "heightInFeet" : 6.027456183070403,
+            "name" : "name"
+          } ]
+        }
+      },
+      "MedicalEvent" : {
+        "required" : [ "id" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "type" : {
+            "$ref" : "#/components/schemas/MedicalEventType"
+          },
+          "date" : {
+            "type" : "string",
+            "format" : "date_time"
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        }
+      },
+      "MedicalHistory" : {
+        "required" : [ "id" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "events" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/MedicalEvent"
+            }
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        }
+      },
+      "Note" : {
+        "required" : [ "id" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "addedByStaff" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "timeStamp" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "content" : {
+            "type" : "string"
+          }
+        },
+        "example" : {
+          "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+          "content" : "content"
+        }
+      },
+      "Organization" : {
+        "required" : [ "id", "name" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "locations" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Location"
+            }
+          },
+          "phones" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/PhoneNumber"
+            }
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        },
+        "example" : {
+          "notes" : [ {
+            "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+            "content" : "content"
+          }, {
+            "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+            "content" : "content"
+          } ],
+          "name" : "name",
+          "phones" : [ {
+            "number" : 0,
+            "numberType" : "Primary",
+            "location" : "Home"
+          }, {
+            "number" : 0,
+            "numberType" : "Primary",
+            "location" : "Home"
+          } ],
+          "locations" : [ {
+            "address" : {
+              "country" : "country",
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "city" : "city",
+              "stateOrProvence" : "stateOrProvence",
+              "county" : "Alcona",
+              "addressLine1" : "addressLine1",
+              "addressLine2" : "addressLine2"
+            },
+            "notes" : [ null, null ],
+            "buildings" : [ null, null ],
+            "kennels" : [ {
+              "lengthInInches" : 5,
+              "heightInInches" : 2,
+              "widthInInches" : 5,
+              "notes" : [ null, null ],
+              "species" : "Dog",
+              "name" : "name",
+              "maxOccupancy" : 1,
+              "animals" : [ {
+                "ageIsEstimated" : true,
+                "notes" : [ null, null ],
+                "gender" : "Male",
+                "name" : "name",
+                "dateOfBirth" : "2000-01-23",
+                "biography" : "biography",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              }, {
+                "ageIsEstimated" : true,
+                "notes" : [ null, null ],
+                "gender" : "Male",
+                "name" : "name",
+                "dateOfBirth" : "2000-01-23",
+                "biography" : "biography",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              } ],
+              "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            }, {
+              "lengthInInches" : 5,
+              "heightInInches" : 2,
+              "widthInInches" : 5,
+              "notes" : [ null, null ],
+              "species" : "Dog",
+              "name" : "name",
+              "maxOccupancy" : 1,
+              "animals" : [ {
+                "ageIsEstimated" : true,
+                "notes" : [ null, null ],
+                "gender" : "Male",
+                "name" : "name",
+                "dateOfBirth" : "2000-01-23",
+                "biography" : "biography",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              }, {
+                "ageIsEstimated" : true,
+                "notes" : [ null, null ],
+                "gender" : "Male",
+                "name" : "name",
+                "dateOfBirth" : "2000-01-23",
+                "biography" : "biography",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              } ],
+              "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            } ],
+            "name" : "name",
+            "enclosures" : [ {
+              "unitOfHeightMeasure" : "inches",
+              "notes" : [ null, null ],
+              "size" : 0.8008281904610115,
+              "unitOfAreaMeasure" : "sq. feet",
+              "heightInFeet" : 6.027456183070403,
+              "name" : "name"
+            }, {
+              "unitOfHeightMeasure" : "inches",
+              "notes" : [ null, null ],
+              "size" : 0.8008281904610115,
+              "unitOfAreaMeasure" : "sq. feet",
+              "heightInFeet" : 6.027456183070403,
+              "name" : "name"
+            } ]
+          }, {
+            "address" : {
+              "country" : "country",
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "city" : "city",
+              "stateOrProvence" : "stateOrProvence",
+              "county" : "Alcona",
+              "addressLine1" : "addressLine1",
+              "addressLine2" : "addressLine2"
+            },
+            "notes" : [ null, null ],
+            "buildings" : [ null, null ],
+            "kennels" : [ {
+              "lengthInInches" : 5,
+              "heightInInches" : 2,
+              "widthInInches" : 5,
+              "notes" : [ null, null ],
+              "species" : "Dog",
+              "name" : "name",
+              "maxOccupancy" : 1,
+              "animals" : [ {
+                "ageIsEstimated" : true,
+                "notes" : [ null, null ],
+                "gender" : "Male",
+                "name" : "name",
+                "dateOfBirth" : "2000-01-23",
+                "biography" : "biography",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              }, {
+                "ageIsEstimated" : true,
+                "notes" : [ null, null ],
+                "gender" : "Male",
+                "name" : "name",
+                "dateOfBirth" : "2000-01-23",
+                "biography" : "biography",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              } ],
+              "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            }, {
+              "lengthInInches" : 5,
+              "heightInInches" : 2,
+              "widthInInches" : 5,
+              "notes" : [ null, null ],
+              "species" : "Dog",
+              "name" : "name",
+              "maxOccupancy" : 1,
+              "animals" : [ {
+                "ageIsEstimated" : true,
+                "notes" : [ null, null ],
+                "gender" : "Male",
+                "name" : "name",
+                "dateOfBirth" : "2000-01-23",
+                "biography" : "biography",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              }, {
+                "ageIsEstimated" : true,
+                "notes" : [ null, null ],
+                "gender" : "Male",
+                "name" : "name",
+                "dateOfBirth" : "2000-01-23",
+                "biography" : "biography",
+                "age" : "8W, 6M, 2Y",
+                "status" : "Adoption Pending"
+              } ],
+              "roomId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            } ],
+            "name" : "name",
+            "enclosures" : [ {
+              "unitOfHeightMeasure" : "inches",
+              "notes" : [ null, null ],
+              "size" : 0.8008281904610115,
+              "unitOfAreaMeasure" : "sq. feet",
+              "heightInFeet" : 6.027456183070403,
+              "name" : "name"
+            }, {
+              "unitOfHeightMeasure" : "inches",
+              "notes" : [ null, null ],
+              "size" : 0.8008281904610115,
+              "unitOfAreaMeasure" : "sq. feet",
+              "heightInFeet" : 6.027456183070403,
+              "name" : "name"
+            } ]
+          } ],
+          "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+        }
+      },
+      "PhoneNumber" : {
+        "required" : [ "location", "number", "numberType" ],
+        "type" : "object",
+        "properties" : {
+          "number" : {
+            "type" : "integer"
+          },
+          "location" : {
+            "type" : "string",
+            "enum" : [ "Home", "Work", "Mobile", "Fax", "Custom" ]
+          },
+          "numberType" : {
+            "type" : "string",
+            "enum" : [ "Primary", "Alternate", "Notification" ]
+          }
+        },
+        "example" : {
+          "number" : 0,
+          "numberType" : "Primary",
+          "location" : "Home"
+        }
+      },
+      "Room" : {
+        "required" : [ "buildingId", "id" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "buildingId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "example" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+          },
+          "kennels" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Kennel"
+            }
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        },
+        "example" : {
+          "notes" : [ null, null ],
+          "kennels" : [ null, null ],
+          "name" : "name",
+          "buildingId" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+        }
+      },
+      "Species" : {
+        "type" : "string",
+        "enum" : [ "Dog", "Cat" ]
+      },
+      "Volunteer" : {
+        "required" : [ "contactId", "id" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/Id"
+          },
+          "contactId" : {
+            "$ref" : "#/components/schemas/Contact"
+          },
+          "startDate" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "endDate" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "availablitySchedule" : {
+            "$ref" : "#/components/schemas/AvailabilitySchedule"
+          },
+          "notes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Note"
+            }
+          }
+        },
+        "example" : {
+          "notes" : [ {
+            "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+            "content" : "content"
+          }, {
+            "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+            "content" : "content"
+          } ],
+          "contactId" : {
+            "emails" : [ {
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "emailType" : "Primary",
+              "email" : ""
+            }, {
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "emailType" : "Primary",
+              "email" : ""
+            } ],
+            "driversLicense" : "driversLicense",
+            "firstName" : "John",
+            "lastName" : "Doe",
+            "addresses" : [ {
+              "country" : "country",
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "city" : "city",
+              "stateOrProvence" : "stateOrProvence",
+              "county" : "Alcona",
+              "addressLine1" : "addressLine1",
+              "addressLine2" : "addressLine2"
+            }, {
+              "country" : "country",
+              "notes" : [ {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              }, {
+                "timeStamp" : "2000-01-23T04:56:07.000+00:00",
+                "content" : "content"
+              } ],
+              "city" : "city",
+              "stateOrProvence" : "stateOrProvence",
+              "county" : "Alcona",
+              "addressLine1" : "addressLine1",
+              "addressLine2" : "addressLine2"
+            } ],
+            "notes" : [ null, null ],
+            "phones" : [ {
+              "number" : 0,
+              "numberType" : "Primary",
+              "location" : "Home"
+            }, {
+              "number" : 0,
+              "numberType" : "Primary",
+              "location" : "Home"
+            } ],
+            "middleName" : "Albert",
+            "dateOfBirth" : "2000-01-23"
+          },
+          "endDate" : "2000-01-23",
+          "availablitySchedule" : {
+            "schedule" : [ {
+              "intervals" : [ {
+                "fromTime" : "00:00"
+              }, {
+                "fromTime" : "00:00"
+              } ],
+              "dayOfWeek" : "Monday"
+            }, {
+              "intervals" : [ {
+                "fromTime" : "00:00"
+              }, {
+                "fromTime" : "00:00"
+              } ],
+              "dayOfWeek" : "Monday"
+            } ],
+            "dateRange" : {
+              "begin" : {
+                "month" : "January",
+                "dayOfMonth" : 0
+              }
+            }
+          },
+          "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
+          "startDate" : "2000-01-23"
+        }
+      },
+      "TimeInterval" : {
+        "type" : "object",
+        "properties" : {
+          "fromTime" : {
+            "$ref" : "#/components/schemas/HalfHourMilitaryTimeSelect"
+          },
+          "toTime" : {
+            "$ref" : "#/components/schemas/HalfHourMilitaryTimeSelect"
+          }
+        },
+        "example" : {
+          "fromTime" : "00:00"
+        }
+      },
+      "AdoptionStatus" : {
+        "type" : "string",
+        "enum" : [ "Adoption Pending", "Available", "Available Pending Spay/Neuter", "Medical Hold", "Pending Intake Testing" ]
+      },
+      "CatBreeds" : {
+        "type" : "string",
+        "enum" : [ "Undetermined", "Abyssinian", "American Curl", "Bengal", "Domestic Longhair", "Domestic Mediumhair", "Domestic Shorthair", "Himalayan", "Maine Coon", "Manx", "Persian", "RagaMuffin", "Ragdoll", "Russian Blue", "Fold", "Siamese", "Snowshoe", "Sphynx" ]
+      },
+      "CatColors" : {
+        "type" : "string",
+        "enum" : [ "White", "Black", "Black and White", "Orange Tabby", "Orange and White", "Brown", "Brown Tabby", "Brown and White", "Gray", "Gray and White", "Gray Tabby", "Silver", "Silver and White", "Silver Tabby", "Buff", "Buff and White", "Buff Tabby", "Seal Point", "Flame Point", "Lavendar/Lilac Point", "Snowshoe", "Calico", "Tortie", "Dilute Calico" ]
+      },
+      "CountyMI" : {
+        "type" : "string",
+        "enum" : [ "Alcona", "Alger", "Allegan", "Alpena", "Antrim", "Arenac", "Baraga", "Barry", "Bay", "Benzie", "Berrien", "Branch", "Calhoun", "Cass", "Charlevoix", "Cheboygan", "Chippewa", "Clare", "Clinton", "Crawford", "Delta", "Dickinson", "Eaton", "Emmet", "Genesee", "Gladwin", "Gogebic  ", "Grand Traverse", "Gratiot", "Hillsdale", "Houghton", "Huron", "Ingham", "Ionia", "Iosco", "Iron", "Isabella", "Jackson", "Kalamazoo", "Kalkaska", "Kent", "Keweenaw", "Lake", "Lapeer", "Leelanau", "Lenawee", "Livingston", "Luce", "Mackinac", "Macomb", "Manistee", "Marquette", "Mason", "Mecosta", "Menominee", "Midland", "Missaukee", "Monroe", "Montcalm", "Montmorency", "Muskegon", "Newaygo", "Oakland", "Oceana", "Ogemaw", "Ontonagon", "Osceola", "Oscoda", "Otsego", "Ottawa", "Presque Isle", "Roscommon", "Saginaw", "St. Clair", "St. Joseph", "Sanilac", "Schoolcraft", "Shiawassee", "Tuscola", "Van Buren", "Washtenaw", "Wayne", "Wexford" ]
+      },
+      "MonthSelect" : {
+        "type" : "string",
+        "enum" : [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]
+      },
+      "DayOfMonthSelect" : {
+        "type" : "integer",
+        "enum" : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31 ]
+      },
+      "DayOfWeekSelect" : {
+        "type" : "string",
+        "enum" : [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" ]
+      },
+      "DogBreeds" : {
+        "type" : "string",
+        "enum" : [ "Undetermined", "Akita", "American Bulldog", "American Eskimo Dog", "Australian Cattle Dog", "Australian Shepherd", "Basenji", "Basset Hound", "Beagle", "Bernese Mountain Dog", "Bichon Frise", "Bloodhound", "Border Collie", "Boston Terrier", "Boxer Scottish", "Brittany Spaniel", "Bull Terrier", "Bulldog", "Bullmastiff", "Catahoula Leopard Dog", "Cavalier King Charles Spaniel", "Chihuahua", "Chinese Crested", "Chow Chow", "Cockapoo", "Cocker Spaniel", "Collie", "Dalmatian", "Dashshund", "Doberman Pinscher", "English Setter", "Flat-Coated Retriever", "Fox Terrier", "French Bulldog", "German Shepherd", "German Shorthaired Pointer", "Golden Retriever", "Goldendoodle", "Great Dane", "Great Pyrenees", "Greyhound", "Havanese", "Irish Setter", "Jack Russell Terrier", "Labradoodle" ]
+      },
+      "DogColors" : {
+        "type" : "string",
+        "enum" : [ "Black", "Black and White", "White", "Brindle", "Tri-Color", "Brown", "Brown and White", "Gray/Blue", "Gray and White", "Red/Cinnamon", "Black and Tan", "Tan", "Tan and White" ]
+      },
+      "Gender" : {
+        "type" : "string",
+        "enum" : [ "Male", "Female", "Undetermined" ]
+      },
+      "HalfHourMilitaryTimeSelect" : {
+        "type" : "string",
+        "enum" : [ "00:00", "00:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30" ]
+      },
+      "MedicalEventType" : {
+        "type" : "string",
+        "enum" : [ "Vaccination", "Preventative", "Surgery" ]
+      },
+      "YearSelect" : {
+        "type" : "integer",
+        "enum" : [ 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036, 2037, 2038, 2039, 2040, 2041, 2042, 2043, 2044, 2045, 2046, 2047, 2048, 2049 ]
+      },
+      "AvailabilitySchedule_dateRange_begin" : {
+        "type" : "object",
+        "properties" : {
+          "month" : {
+            "$ref" : "#/components/schemas/MonthSelect"
+          },
+          "dayOfMonth" : {
+            "$ref" : "#/components/schemas/DayOfMonthSelect"
+          }
+        },
+        "example" : {
+          "month" : "January",
+          "dayOfMonth" : 0
+        }
+      },
+      "AvailabilitySchedule_dateRange" : {
+        "type" : "object",
+        "properties" : {
+          "begin" : {
+            "$ref" : "#/components/schemas/AvailabilitySchedule_dateRange_begin"
+          },
+          "end" : {
+            "$ref" : "#/components/schemas/AvailabilitySchedule_dateRange_begin"
+          }
+        },
+        "example" : {
+          "begin" : {
+            "month" : "January",
+            "dayOfMonth" : 0
+          }
+        }
+      }
+    },
+    "parameters" : {
+      "PageLimit" : {
+        "name" : "limit",
+        "in" : "query",
+        "description" : "Limits the number of items on a page",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "integer"
+        }
+      },
+      "PageNumber" : {
+        "name" : "offset",
+        "in" : "query",
+        "description" : "Specifies the page number of the artists to be displayed",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "integer"
+        }
+      },
+      "FromDate" : {
+        "name" : "fromDate",
+        "in" : "query",
+        "description" : "Specifies the first date to return in a query",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "string",
+          "format" : "date"
+        }
+      },
+      "Gender" : {
+        "name" : "gender",
+        "in" : "query",
+        "description" : "One of the valid Gender enumeration values",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "$ref" : "#/components/schemas/Gender"
+        }
+      },
+      "State" : {
+        "name" : "state",
+        "in" : "query",
+        "description" : "state to retrieve counties for",
+        "required" : true,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      },
+      "ToDate" : {
+        "name" : "toDate",
+        "in" : "query",
+        "description" : "Specifies the last date to include in a query",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "string",
+          "format" : "date"
+        }
+      },
+      "SearchString" : {
+        "name" : "searchString",
+        "in" : "query",
+        "description" : "pass an optional search string for looking up Fosters",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }
+    },
+    "requestBodies" : {
+      "KennelBody" : {
+        "description" : "partial json object of Kennel with fields to patch",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Kennel"
+            }
+          }
+        },
+        "required" : true
+      },
+      "BuildingBody" : {
+        "description" : "unique id of Building to update",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Building"
+            }
+          }
+        },
+        "required" : true
+      },
+      "PatchBody" : {
+        "content" : {
+          "application/json-patch+json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/PatchSet"
+            }
+          }
+        }
+      }
+    }
+  }
+}
