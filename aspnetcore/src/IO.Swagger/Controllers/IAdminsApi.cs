@@ -56,6 +56,7 @@ namespace IO.Swagger.Controllers
         /// <param name="body">Inventory item to add</param>
         /// <response code="201">item created</response>
         /// <response code="400">invalid input, object invalid</response>
+        /// <response code="401">unauthorized request for this user</response>
         /// <response code="409">an existing item already exists</response>
         IActionResult AddInventory([FromBody]InventoryItem body);
 
@@ -108,6 +109,7 @@ namespace IO.Swagger.Controllers
         /// <response code="200">ok</response>
         /// <response code="201">create successful</response>
         /// <response code="400">bad request</response>
+        /// <response code="401">unauthorized request for this user</response>
         /// <response code="409">unable to apply valid change to a valid Contact</response>
         IActionResult CreateContact([FromBody]Contact body);
 
@@ -291,8 +293,8 @@ namespace IO.Swagger.Controllers
         /// <summary>
         /// reports whether the API is up and running
         /// </summary>
-        /// <remarks>used to check on the api status</remarks>
-        /// <response code="200">OK</response>
+        /// <remarks>used to check on the api status, but returns no content</remarks>
+        /// <response code="204">OK</response>
         IActionResult GetApiHealth();
 
         /// <summary>
@@ -615,6 +617,7 @@ namespace IO.Swagger.Controllers
         /// <param name="body">partial json object of Contact with fields to patch</param>
         /// <param name="id">unique id of Contact to patch</param>
         /// <response code="200">ok</response>
+        /// <response code="401">unauthorized request for this user</response>
         IActionResult PatchContactById([FromBody]Contact body, [FromRoute][Required]Guid? id);
 
         /// <summary>
@@ -793,6 +796,7 @@ namespace IO.Swagger.Controllers
         /// <param name="searchString">pass an optional search string for looking up inventory</param>
         /// <response code="200">search results matching criteria</response>
         /// <response code="400">bad input parameter</response>
+        /// <response code="401">unauthorized request for this user</response>
         IActionResult SearchInventory([FromQuery]int? limit, [FromQuery]int? offset, [FromQuery]string searchString);
 
         /// <summary>

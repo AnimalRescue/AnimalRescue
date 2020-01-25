@@ -39,10 +39,10 @@
       "get" : {
         "tags" : [ "admins", "public", "staff", "vets" ],
         "summary" : "reports whether the API is up and running",
-        "description" : "used to check on the api status",
+        "description" : "used to check on the api status, but returns no content",
         "operationId" : "getApiHealth",
         "responses" : {
-          "200" : {
+          "204" : {
             "description" : "OK"
           }
         }
@@ -2293,6 +2293,9 @@
           },
           "400" : {
             "description" : "bad input parameter"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
           }
         }
       },
@@ -2317,6 +2320,9 @@
           },
           "400" : {
             "description" : "invalid input, object invalid"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
           },
           "409" : {
             "description" : "an existing item already exists"
@@ -2474,6 +2480,9 @@
           },
           "400" : {
             "description" : "bad request"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
           },
           "409" : {
             "description" : "unable to apply valid change to a valid Cat"
@@ -2767,6 +2776,9 @@
           "400" : {
             "description" : "bad request"
           },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          },
           "409" : {
             "description" : "unable to apply valid change to a valid Dog"
           }
@@ -3028,6 +3040,9 @@
           "400" : {
             "description" : "bad request"
           },
+          "401" : {
+            "description" : "unauthorized request for this user"
+          },
           "409" : {
             "description" : "unable to apply valid change to a valid Contact"
           }
@@ -3165,6 +3180,9 @@
         "responses" : {
           "200" : {
             "description" : "ok"
+          },
+          "401" : {
+            "description" : "unauthorized request for this user"
           }
         }
       }
