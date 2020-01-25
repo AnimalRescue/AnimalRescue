@@ -4257,10 +4257,12 @@
           "country" : "country",
           "notes" : [ {
             "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-            "content" : "content"
+            "content" : "content",
+            "status" : "Visible"
           }, {
             "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-            "content" : "content"
+            "content" : "content",
+            "status" : "Visible"
           } ],
           "city" : "city",
           "stateOrProvence" : "stateOrProvence",
@@ -4301,20 +4303,24 @@
             "emails" : [ {
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "emailType" : "Primary",
               "email" : ""
             }, {
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "emailType" : "Primary",
               "email" : ""
@@ -4326,10 +4332,12 @@
               "country" : "country",
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "city" : "city",
               "stateOrProvence" : "stateOrProvence",
@@ -4340,10 +4348,12 @@
               "country" : "country",
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "city" : "city",
               "stateOrProvence" : "stateOrProvence",
@@ -4551,10 +4561,12 @@
               "country" : "country",
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "city" : "city",
               "stateOrProvence" : "stateOrProvence",
@@ -4725,20 +4737,24 @@
           "emails" : [ {
             "notes" : [ {
               "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-              "content" : "content"
+              "content" : "content",
+              "status" : "Visible"
             }, {
               "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-              "content" : "content"
+              "content" : "content",
+              "status" : "Visible"
             } ],
             "emailType" : "Primary",
             "email" : ""
           }, {
             "notes" : [ {
               "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-              "content" : "content"
+              "content" : "content",
+              "status" : "Visible"
             }, {
               "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-              "content" : "content"
+              "content" : "content",
+              "status" : "Visible"
             } ],
             "emailType" : "Primary",
             "email" : ""
@@ -4750,10 +4766,12 @@
             "country" : "country",
             "notes" : [ {
               "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-              "content" : "content"
+              "content" : "content",
+              "status" : "Visible"
             }, {
               "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-              "content" : "content"
+              "content" : "content",
+              "status" : "Visible"
             } ],
             "city" : "city",
             "stateOrProvence" : "stateOrProvence",
@@ -4764,10 +4782,12 @@
             "country" : "country",
             "notes" : [ {
               "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-              "content" : "content"
+              "content" : "content",
+              "status" : "Visible"
             }, {
               "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-              "content" : "content"
+              "content" : "content",
+              "status" : "Visible"
             } ],
             "city" : "city",
             "stateOrProvence" : "stateOrProvence",
@@ -4863,10 +4883,12 @@
           "date" : "2000-01-23",
           "notes" : [ {
             "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-            "content" : "content"
+            "content" : "content",
+            "status" : "Visible"
           }, {
             "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-            "content" : "content"
+            "content" : "content",
+            "status" : "Visible"
           } ],
           "type" : "Money"
         }
@@ -4907,20 +4929,24 @@
             "date" : "2000-01-23",
             "notes" : [ {
               "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-              "content" : "content"
+              "content" : "content",
+              "status" : "Visible"
             }, {
               "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-              "content" : "content"
+              "content" : "content",
+              "status" : "Visible"
             } ],
             "type" : "Money"
           }, {
             "date" : "2000-01-23",
             "notes" : [ {
               "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-              "content" : "content"
+              "content" : "content",
+              "status" : "Visible"
             }, {
               "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-              "content" : "content"
+              "content" : "content",
+              "status" : "Visible"
             } ],
             "type" : "Money"
           } ],
@@ -4929,20 +4955,24 @@
             "emails" : [ {
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "emailType" : "Primary",
               "email" : ""
             }, {
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "emailType" : "Primary",
               "email" : ""
@@ -4954,10 +4984,12 @@
               "country" : "country",
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "city" : "city",
               "stateOrProvence" : "stateOrProvence",
@@ -4968,10 +5000,12 @@
               "country" : "country",
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "city" : "city",
               "stateOrProvence" : "stateOrProvence",
@@ -5018,10 +5052,12 @@
         "example" : {
           "notes" : [ {
             "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-            "content" : "content"
+            "content" : "content",
+            "status" : "Visible"
           }, {
             "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-            "content" : "content"
+            "content" : "content",
+            "status" : "Visible"
           } ],
           "emailType" : "Primary",
           "email" : ""
@@ -5098,30 +5134,36 @@
         "example" : {
           "notes" : [ {
             "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-            "content" : "content"
+            "content" : "content",
+            "status" : "Visible"
           }, {
             "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-            "content" : "content"
+            "content" : "content",
+            "status" : "Visible"
           } ],
           "endDate" : "2000-01-23",
           "contactId" : {
             "emails" : [ {
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "emailType" : "Primary",
               "email" : ""
             }, {
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "emailType" : "Primary",
               "email" : ""
@@ -5133,10 +5175,12 @@
               "country" : "country",
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "city" : "city",
               "stateOrProvence" : "stateOrProvence",
@@ -5147,10 +5191,12 @@
               "country" : "country",
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "city" : "city",
               "stateOrProvence" : "stateOrProvence",
@@ -5176,10 +5222,12 @@
               "country" : "country",
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "city" : "city",
               "stateOrProvence" : "stateOrProvence",
@@ -5306,10 +5354,12 @@
         "example" : {
           "notes" : [ {
             "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-            "content" : "content"
+            "content" : "content",
+            "status" : "Visible"
           }, {
             "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-            "content" : "content"
+            "content" : "content",
+            "status" : "Visible"
           } ],
           "surrenderingPartyId" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
           "id" : "d290f1ee-6c54-4b01-90e6-d701748f0851",
@@ -5344,10 +5394,12 @@
         "example" : {
           "notes" : [ {
             "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-            "content" : "content"
+            "content" : "content",
+            "status" : "Visible"
           }, {
             "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-            "content" : "content"
+            "content" : "content",
+            "status" : "Visible"
           } ],
           "releaseDate" : "2016-08-29T09:12:33.001Z",
           "name" : "Widget Adapter",
@@ -5470,10 +5522,12 @@
             "country" : "country",
             "notes" : [ {
               "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-              "content" : "content"
+              "content" : "content",
+              "status" : "Visible"
             }, {
               "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-              "content" : "content"
+              "content" : "content",
+              "status" : "Visible"
             } ],
             "city" : "city",
             "stateOrProvence" : "stateOrProvence",
@@ -5615,13 +5669,17 @@
             "type" : "string",
             "format" : "date-time"
           },
+          "status" : {
+            "$ref" : "#/components/schemas/NoteStatus"
+          },
           "content" : {
             "type" : "string"
           }
         },
         "example" : {
           "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-          "content" : "content"
+          "content" : "content",
+          "status" : "Visible"
         }
       },
       "Organization" : {
@@ -5656,10 +5714,12 @@
         "example" : {
           "notes" : [ {
             "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-            "content" : "content"
+            "content" : "content",
+            "status" : "Visible"
           }, {
             "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-            "content" : "content"
+            "content" : "content",
+            "status" : "Visible"
           } ],
           "name" : "name",
           "phones" : [ {
@@ -5676,10 +5736,12 @@
               "country" : "country",
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "city" : "city",
               "stateOrProvence" : "stateOrProvence",
@@ -5767,10 +5829,12 @@
               "country" : "country",
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "city" : "city",
               "stateOrProvence" : "stateOrProvence",
@@ -5949,29 +6013,35 @@
         "example" : {
           "notes" : [ {
             "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-            "content" : "content"
+            "content" : "content",
+            "status" : "Visible"
           }, {
             "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-            "content" : "content"
+            "content" : "content",
+            "status" : "Visible"
           } ],
           "contactId" : {
             "emails" : [ {
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "emailType" : "Primary",
               "email" : ""
             }, {
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "emailType" : "Primary",
               "email" : ""
@@ -5983,10 +6053,12 @@
               "country" : "country",
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "city" : "city",
               "stateOrProvence" : "stateOrProvence",
@@ -5997,10 +6069,12 @@
               "country" : "country",
               "notes" : [ {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               }, {
                 "timeStamp" : "2000-01-23T04:56:07.000+00:00",
-                "content" : "content"
+                "content" : "content",
+                "status" : "Visible"
               } ],
               "city" : "city",
               "stateOrProvence" : "stateOrProvence",
@@ -6106,6 +6180,10 @@
       "HalfHourMilitaryTimeSelect" : {
         "type" : "string",
         "enum" : [ "00:00", "00:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30" ]
+      },
+      "NoteStatus" : {
+        "type" : "string",
+        "enum" : [ "Visible", "Hidden", "Deleted" ]
       },
       "MedicalEventType" : {
         "type" : "string",

@@ -46,6 +46,34 @@ namespace IO.Swagger.Models
         public DateTime? TimeStamp { get; set; }
 
         /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public enum NoteStatus
+        {
+            /// <summary>
+            /// Enum VisibleEnum for Visible
+            /// </summary>
+            [EnumMember(Value = "Visible")]
+            VisibleEnum = 0,
+            /// <summary>
+            /// Enum HiddenEnum for Hidden
+            /// </summary>
+            [EnumMember(Value = "Hidden")]
+            HiddenEnum = 1,
+            /// <summary>
+            /// Enum DeletedEnum for Deleted
+            /// </summary>
+            [EnumMember(Value = "Deleted")]
+            DeletedEnum = 2        }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name="status")]
+        public NoteStatus? Status { get; set; }
+
+        /// <summary>
         /// Gets or Sets Content
         /// </summary>
         [DataMember(Name="content")]
@@ -62,6 +90,7 @@ namespace IO.Swagger.Models
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  AddedByStaff: ").Append(AddedByStaff).Append("\n");
             sb.Append("  TimeStamp: ").Append(TimeStamp).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Content: ").Append(Content).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -115,6 +144,11 @@ namespace IO.Swagger.Models
                     TimeStamp.Equals(other.TimeStamp)
                 ) && 
                 (
+                    Status == other.Status ||
+                    Status != null &&
+                    Status.Equals(other.Status)
+                ) && 
+                (
                     Content == other.Content ||
                     Content != null &&
                     Content.Equals(other.Content)
@@ -137,6 +171,8 @@ namespace IO.Swagger.Models
                     hashCode = hashCode * 59 + AddedByStaff.GetHashCode();
                     if (TimeStamp != null)
                     hashCode = hashCode * 59 + TimeStamp.GetHashCode();
+                    if (Status != null)
+                    hashCode = hashCode * 59 + Status.GetHashCode();
                     if (Content != null)
                     hashCode = hashCode * 59 + Content.GetHashCode();
                 return hashCode;
