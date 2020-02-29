@@ -196,10 +196,10 @@ namespace IO.Swagger.Models
             [EnumMember(Value = "Gladwin")]
             GladwinEnum = 25,
             /// <summary>
-            /// Enum Gogebic_Enum for Gogebic  
+            /// Enum GogebicEnum for Gogebic
             /// </summary>
-            [EnumMember(Value = "Gogebic  ")]
-            Gogebic_Enum = 26,
+            [EnumMember(Value = "Gogebic")]
+            GogebicEnum = 26,
             /// <summary>
             /// Enum GrandTraverseEnum for Grand Traverse
             /// </summary>
